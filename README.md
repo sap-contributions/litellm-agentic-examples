@@ -7,6 +7,7 @@ With the SAP proivder for LiteLMM users can leverage all LLMs in SAP Gen. AI Hub
 
 ## 1. Langgraph
 https://docs.langchain.com
+
  
 ## 2. CrewAI
  
@@ -15,8 +16,9 @@ https://docs.langchain.com
 ## 4. Google ADK
  
 ## 5. OpenAI ADK
+https://platform.openai.com/docs/guides/agents-sdk
 
-see opan_ai_litellm.py
+see [openai_adk.py](openai_adk.py)
 
 ## 6. AWS
  
