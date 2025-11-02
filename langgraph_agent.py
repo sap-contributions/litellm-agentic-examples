@@ -1,3 +1,7 @@
+"""
+A Langchain agent that uses a weather tool.
+This example uses the Langgraph Functional API according to: https://docs.langchain.com/oss/python/langgraph/quickstart#use-the-functional-api
+"""
 from langchain.tools import tool
 from langchain_litellm import ChatLiteLLM
 from langgraph.graph import add_messages
