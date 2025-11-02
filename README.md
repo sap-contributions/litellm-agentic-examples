@@ -2,13 +2,20 @@
 With the SAP proivder for LiteLMM users can leverage all LLMs in SAP Gen. AI Hub.
 
 ## Prerequisites
-- AI Core Gen AI subscription via BTP tenant
-- Install Litellm including SAP provider
+- AI Core Gen AI subscription via BTP tenant.
+- Install latest Litellm (including SAP provider).
 
 ## 1. Langgraph
-https://docs.langchain.com
+### [Docs](https://docs.langchain.com)
 
- 
+### Required Dependencies
+```bash
+pip install litellm langgraph langchain-litellm
+```
+
+### Example Code
+see [langgraph_agent.py](langgraph_agent.py)
+
 ## 2. CrewAI
  
 ## 3. PydanticAI

@@ -26,9 +26,9 @@ async def main(model: str, city: str = "Tokyo"):
     agent = Agent(
         name="Assistant",
         instructions="You are a helpful weather assistant. "
-                "When the user send you asks a specific city, "
+                "When the user asks you about a specific city, "
                 "use the 'get_weather' tool to find the information about the weather. "
-                "Aser with TV weather report in two sentences, include small jok",
+                "Answer with a TV weather report in two sentences, including a small joke.",
         model=LitellmModel(model=model),
         tools=[get_weather],
     )
