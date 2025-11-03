@@ -2,6 +2,7 @@
 A Langchain agent that uses a weather tool.
 This example uses the Langgraph Functional API according to: https://docs.langchain.com/oss/python/langgraph/quickstart#use-the-functional-api
 """
+
 from langchain.tools import tool
 from langchain_litellm import ChatLiteLLM
 from langgraph.graph import add_messages
@@ -15,12 +16,10 @@ from langgraph.func import entrypoint, task
 
 # Step 1: Define model and tools
 
-model = ChatLiteLLM(
-    model="sap/gpt-4o",
-    temperature=0
-)
+model = ChatLiteLLM(model="sap/gpt-4o", temperature=0)
 
 # Define weather tool
+
 
 @tool
 def get_weather(city: str):
@@ -29,7 +28,7 @@ def get_weather(city: str):
     :param city:
     :return: weather information
     """
-    city_normalized = (city.lower().replace(" ", ""))
+    city_normalized = city.lower().replace(" ", "")
 
     mock_weather_db = {
         "newyork": "The weather in New York is sunny with a temperature of 25°C.",
@@ -42,6 +41,7 @@ def get_weather(city: str):
     else:
         return f"The weather in {city} is sunny with a temperature of 20°C."
 
+
 # Augment the LLM with tools
 
 tools = [get_weather]
@@ -49,6 +49,7 @@ tools_by_name = {tool.name: tool for tool in tools}
 model_with_tools = model.bind_tools(tools)
 
 # Step 2: Define model node
+
 
 @task
 def call_llm(messages: list[BaseMessage]):
@@ -68,6 +69,7 @@ def call_llm(messages: list[BaseMessage]):
 
 # Step 3: Define tool node
 
+
 @task
 def call_tool(tool_call: ToolCall):
     """Performs the tool call"""
@@ -76,6 +78,7 @@ def call_tool(tool_call: ToolCall):
 
 
 # Step 4: Define agent
+
 
 @entrypoint()
 def agent(messages: list[BaseMessage]):
@@ -95,7 +98,6 @@ def agent(messages: list[BaseMessage]):
 
     messages = add_messages(messages, model_response)
     return messages
-
 
 
 # Invoke

@@ -1,14 +1,17 @@
 from __future__ import annotations
+
 # pip install "openai-agents[litellm]"
 import asyncio
 from dotenv import load_dotenv
 from agents import Agent, Runner, function_tool, set_tracing_disabled
 from agents.extensions.models.litellm_model import LitellmModel
+
 load_dotenv()
+
 
 @function_tool
 def get_weather(city: str):
-    city_normalized = (city.lower().replace(" ", ""))
+    city_normalized = city.lower().replace(" ", "")
 
     mock_weather_db = {
         "newyork": "The weather in New York is sunny with a temperature of 25°C.",
@@ -39,4 +42,4 @@ async def main(model: str, city: str = "Tokyo"):
 
 if __name__ == "__main__":
     city = input("Input city: ")
-    asyncio.run(main(model='sap/gpt-4.1', city=city))
+    asyncio.run(main(model="sap/gpt-4.1", city=city))
