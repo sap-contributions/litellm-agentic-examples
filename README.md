@@ -14,7 +14,7 @@ pip install litellm langgraph langchain-litellm
 ```
 
 ### Example Code
-see [langgraph_agent.py](langgraph_agent.py)
+see [langgraph_agent.py](langgraph_example/langgraph_agent.py)
 
 ## 2. CrewAI
  
@@ -25,7 +25,7 @@ see [langgraph_agent.py](langgraph_agent.py)
 ## 5. OpenAI ADK
 https://platform.openai.com/docs/guides/agents-sdk
 
-see [openai_adk.py](openai_adk.py)
+see [openai_adk.py](openai_adk_example/openai_adk.py)
 
 ## 6. AWS
  
