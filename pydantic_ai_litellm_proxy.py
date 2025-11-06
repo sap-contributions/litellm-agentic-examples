@@ -20,9 +20,9 @@ model = OpenAIChatModel(
 agent = Agent(
     model=model,
     system_prompt="You are a helpful weather assistant. "
-    "When the user send you asks a specific city, "
+    "When the user for a specific city, "
     "use the 'get_weather' tool to find the information about the weather. "
-    "Aser with TV weather report in two sentences, include small jok",
+    "Answer with a TV weather report in two sentences including a small joke.",
 )
 
 

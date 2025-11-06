@@ -57,8 +57,8 @@ weather_agent = Agent(
                 "When the user asks for the weather in a specific city, "
                 "use the 'get_weather' tool to find the information. "
                 "If the tool returns an error, inform the user politely. "
-                "If the tool is successful, write a couple sentences for "
-                "TV weather report in the city, that will be include small jok",
+                "If the tool is successful, write a couple sentences for a "
+                "TV weather report in the given city including a small joke.",
     tools=[get_weather],
 )
 

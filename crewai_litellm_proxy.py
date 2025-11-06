@@ -38,9 +38,9 @@ city = input("Input city: ")
 # --- Define agents ---
 agent = Agent(
     role="Weather presenter",
-    goal=f"Prepare a couple sentences TV speach about weather in the {city}, "
-         f"using information from run the get_weather tool",
-    backstory="You are the weather presenter on TV",
+    goal=f"Prepare a couple sentences in TV speach about weather in the {city}, "
+         f"using information from the get_weather tool",
+    backstory="You are the weather presenter on TV.",
     llm=proxy_llm,
     tools=[get_weather],
     allow_delegation=False,
