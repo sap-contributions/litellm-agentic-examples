@@ -7,7 +7,7 @@ load_dotenv()
 
 @tool("get_weather")
 def get_weather(city: str) -> str:
-    """Moke function"""
+    """Mock function"""
     city_normalized = city.lower().replace(" ", "")
 
     mock_weather_db = {
