@@ -1,42 +1,44 @@
 # Agentic Examples for SAP Generative AI Hub
-With the SAP proivder for LiteLMM users can leverage all LLMs in SAP Gen. AI Hub.
+The examples below showcase how to use different agentic frameworks with the SAP provider via LiteLMM.
+Users can access LLMs across all vendors (OpenAI, Google, Amazon, Mistral, SAP, ...) available in the Generative AI Hub.
+Each framework example is described in a separate jupyter notebook.
 
 ## Prerequisites
 - AI Core Gen AI subscription via BTP tenant.
 - Install latest Litellm (including SAP provider).
 
 ## 1. Langgraph
-### [Docs](https://docs.langchain.com)
-
-### Required Dependencies
-```bash
-pip install litellm langgraph langchain-litellm
-```
-
-### Example Code
-see [langgraph_agent.py](langgraph_example/langgraph_agent.py)
+* [langgraph_agent notebook](langgraph_example/langgraph_agent.ipynb)
 
 ## 2. CrewAI
- 
-## 3. PydanticAI
- 
-## 4. Google ADK
- 
-## 5. OpenAI ADK
-https://platform.openai.com/docs/guides/agents-sdk
+* [crewai_litellm_lib notebook](crewai_example/crewai_litellm_lib.ipynb)
+* [crewai_litellm_proxy notebook](crewai_example/crewai_litellm_proxy.ipynb)
 
-see [openai_adk.py](openai_adk_example/openai_adk.py)
+## 3. PydanticAI
+* [pydanticai_litellm notebook](pydanticai_example/pydanticai_litellm.ipynb)
+
+## 4. Google ADK
+* [google_adk notebook](google_adk_example/google_adk.ipynb)
+
+## 5. OpenAI ADK
+* [openai_adk.py](openai_adk_example/openai_adk.ipynb)
 
 ## 6. AWS
+* [aws_strands notebook](aws_strands_example/aws_strand.ipynb)
  
 ## 7. LlamaIndex
- 
+* [Llamaindex_litellm notebook](Llamaindex_example/Llamaindex_litellm.ipynb)
+
 ## 8. smolagents
- 
+* [smolagents_litellm notebook](smolagents_example/smolagents_litellm.ipynb)
+
 ## 9. MSFT Agent Framework
+* [msft_agent_litellm notebook](msft_agent_example/msft_agent_litellm.ipynb)
 
 ## 10. Agentscope
+* [agentscope_litellm notebook](agentscope_example/agentscope_litellm.ipynb)
  
 ## 11. AG2
+* [ag2_litellm notebook](ag2_example/ag2_litellm.ipynb)
  
  
