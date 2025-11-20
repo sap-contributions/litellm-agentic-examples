@@ -46,7 +46,8 @@ def get_weather(city: str) -> dict:
 
 
 # Model selection
-model = LiteLlm(model="sap/gpt-4.1")  # Your orch. service
+model = LiteLlm(model="sap/gpt-4.1")
+
 # Weather agent
 weather_agent = Agent(
     name="weather_agent",
@@ -82,7 +83,7 @@ async def call_agent_async(query: str, runner, user_id, session_id):
                 )
             break
 
-    print(f"<<< Agent Response: {final_response_text}")
+    print(f"Agent Response: {final_response_text}")
 
 
 # Main conversation

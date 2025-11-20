@@ -1,12 +1,11 @@
-from __future__ import annotations
-
 # pip install "openai-agents[litellm]"
-import asyncio
+
 from dotenv import load_dotenv
 from agents import Agent, Runner, function_tool, set_tracing_disabled
 from agents.extensions.models.litellm_model import LitellmModel
 
 load_dotenv()
+set_tracing_disabled(True) # Disable OPEN_API_KEY error
 
 
 @function_tool
@@ -25,7 +24,7 @@ def get_weather(city: str):
         return f"The weather in {city} is sunny with a temperature of 20°C."
 
 
-async def main(model: str, city: str = "Tokyo"):
+def weather_agent(model: str, city: str = "Tokyo"):
     agent = Agent(
         name="Assistant",
         instructions="You are a helpful weather assistant. "
@@ -36,10 +35,10 @@ async def main(model: str, city: str = "Tokyo"):
         tools=[get_weather],
     )
 
-    result = await Runner.run(agent, f"What's the weather in {city}?")
+    result = Runner.run_sync(agent, f"What's the weather in {city}?")
     print(result.final_output)
 
 
 if __name__ == "__main__":
     city = input("Input city: ")
-    asyncio.run(main(model="sap/gpt-4.1", city=city))
+    weather_agent(model="sap/gpt-4.1", city=city)
