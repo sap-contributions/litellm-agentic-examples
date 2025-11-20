@@ -25,7 +25,7 @@ Each framework example is described in a separate jupyter notebook.
 
 ## 6. AWS
 * [aws_strands notebook](aws_strands_example/aws_strand.ipynb)
- 
+
 ## 7. LlamaIndex
 * [Llamaindex_litellm notebook](Llamaindex_example/Llamaindex_litellm.ipynb)
 
@@ -37,8 +37,24 @@ Each framework example is described in a separate jupyter notebook.
 
 ## 10. Agentscope
 * [agentscope_litellm notebook](agentscope_example/agentscope_litellm.ipynb)
- 
+
 ## 11. AG2
 * [ag2_litellm notebook](ag2_example/ag2_litellm.ipynb)
- 
- 
+
+
+## Note for Maintainers of these examples
+Clear cell outputs and metadata using the ".pre-commit-config.yaml".
+Installation procedure:
+```bash
+python3 -m venv env
+source env/bin/activate
+python3 -m pip install pre-commit nbstripout
+```
+Manual run:
+```bash
+pre-commit run --all-files
+```
+Skip Hooks temporarily:
+```bash
+git commit -m "Message" --no-verify
+```
