@@ -1,0 +1,83 @@
+[project]
+name = "sap-litellm-agent-examples"
+version = "0.1.0"
+description = "Example notebooks of using various Agent Development Kits with models from SAP"
+requires-python = ">=3.10"
+
+# These are the dependencies needed to *run* the notebooks
+dependencies = [
+    "litellm[proxy] @ git+https://github.com/sap-contributions/litellm.git@sap_gen_ai_hub",
+    "jupyter",
+]
+
+[tool.pre-commit]
+config = ".pre-commit-config.yaml"
+
+[project.optional-dependencies]
+ag2 = [
+    "ag2[openai]",
+]
+
+agentscope = [
+    "agentscope",
+]
+
+"strands-agents" = [
+    "strands-agents",
+]
+
+crewai = [
+    "crewai",
+]
+
+"google-adk" = [
+    "google-adk",
+]
+
+langgraph = [
+    "langgraph",
+    "langchain-litellm",
+]
+
+openai = [
+    "openai-agents[litellm]",
+]
+
+"pydantic-ai" = [
+    "pydantic-ai",
+]
+
+smolagents = [
+    "smolagents[toolkit]",
+]
+
+# Install *everything* above with: pip install .[all]
+all = [
+    "ag2[openai]",
+    "agentscope",
+    "strands-agents",
+    "crewai",
+    "google-adk",
+    "langgraph",
+    "langchain-litellm",
+    "openai-agents[litellm]",
+    "pydantic-ai",
+    "smolagents[toolkit]",
+]
+
+# Install *everything* above with: pip install .[all]
+dev = [
+    "ag2[openai]",
+    "agentscope",
+    "strands-agents",
+    "crewai",
+    "google-adk",
+    "langgraph",
+    "langchain-litellm",
+    "openai-agents[litellm]",
+    "pydantic-ai",
+    "smolagents[toolkit]",
+    "pre-commit",
+    "black",
+    "isort",
+]
