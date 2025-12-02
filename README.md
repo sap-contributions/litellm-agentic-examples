@@ -39,7 +39,7 @@ Each framework example is described in a separate jupyter notebook.
 * [agentscope_litellm notebook](agentscope_example/agentscope_litellm.ipynb)
 
 ## 11. AG2
-* [ag2_litellm notebook](ag2_example/ag2_litellm.ipynb)
+* [ag2_litellm notebook](ag2_example/ag2_litellm_proxy.ipynb)
 
 
 ## Note for Maintainers of these examples

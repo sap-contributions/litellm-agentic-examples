@@ -1,4 +1,4 @@
-# pip install ag2[openai]
+# https://docs.ag2.ai/latest/docs/user-guide/models/litellm-proxy-server/installation/
 import os
 import litellm
 from dotenv import load_dotenv
@@ -11,7 +11,7 @@ from autogen.agentchat import initiate_group_chat
 litellm.use_litellm_proxy = True
 load_dotenv()
 
-api_base = os.getenv("LITELLM_ROXY_URL")
+api_base = os.getenv("LITELLM_PROXY_URL")
 api_key = os.getenv("LITELLM_MASTER_KEY")
 
 # tool definition
@@ -45,9 +45,9 @@ assistant = ConversableAgent(name="assistant",
                                             "When the user asks for the weather in a specific city, "
                                             "use the 'get_weather' tool to find the information. "
                                             "If the tool returns an error, inform the user politely. "
-                                            "If the tool is successful, write a couple sentences for "
-                                            "TV weather report in the city, that will be include small jok."
-                                            "Once you've generated the report append the below in the summary:"
+                                            "If the tool is successful, write a couple sentences for a "
+                                            "TV weather report in the city, that will be include small joke."
+                                            "Once you've generated the report append this to the summary:"
                                             "==== REPORT GENERATED ====",
                              functions=[get_weather])
 # setup pattern
