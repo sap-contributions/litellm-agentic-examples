@@ -9,8 +9,8 @@ import litellm
 litellm.use_litellm_proxy = True
 load_dotenv()
 
-api_base = os.getenv("LITELLM_ROXY_URL")
-api_key = os.getenv("LITELLM_MASTER_KEY")
+api_base = os.getenv("PROXY_BASE_URL")
+api_key = os.getenv("LITELLM_PROXY_API_KEY")
 proxy_llm = LLM(
     model="sap/gpt-4o", api_base=api_base, base_url=api_base, api_key=api_key
 )

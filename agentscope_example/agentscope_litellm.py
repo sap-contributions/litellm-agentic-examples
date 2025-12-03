@@ -15,8 +15,8 @@ import asyncio
 litellm.use_litellm_proxy = True
 load_dotenv()
 
-api_base = os.getenv("LITELLM_ROXY_URL")
-api_key = os.getenv("LITELLM_MASTER_KEY")
+api_base = os.getenv("PROXY_BASE_URL")
+api_key = os.getenv("LITELLM_PROXY_API_KEY")
 
 # tool definition
 def get_weather(city: str) -> ToolResponse:
