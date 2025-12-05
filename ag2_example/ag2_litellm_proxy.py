@@ -46,7 +46,7 @@ assistant = ConversableAgent(name="assistant",
                                             "use the 'get_weather' tool to find the information. "
                                             "If the tool returns an error, inform the user politely. "
                                             "If the tool is successful, write a couple sentences for a "
-                                            "TV weather report in the city, that will be include small joke."
+                                            "TV weather report in the given city including a small joke."
                                             "Once you've generated the report append this to the summary:"
                                             "==== REPORT GENERATED ====",
                              functions=[get_weather])
