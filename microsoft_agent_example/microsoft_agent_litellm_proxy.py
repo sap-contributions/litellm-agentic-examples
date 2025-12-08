@@ -37,12 +37,13 @@ agent = ChatAgent(
     chat_client=OpenAIChatClient(model_id="sap/gpt-4o",
                                  api_key=api_key,
                                  base_url=api_base,),
-    instructions="You are a helpful weather assistant. "
-                "When the user asks for the weather in a specific city, "
-                "use the 'get_weather' tool to find the information. "
-                "If the tool returns an error, inform the user politely. "
-                "If the tool is successful, write a couple sentences for "
-                "TV weather report in the city, that will be include small jok",
+    instructions="""
+        You are a helpful weather assistant.
+        When the user asks for the weather in a specific city, use the 'get_weather' tool to find the information.
+        If the tool returns an error, inform the user politely.
+        If the tool is successful, write a couple sentences for a TV weather report in the given city
+        including a small joke.
+        """,
     name="litellm_agent",
     tools=[get_weather],
 )
