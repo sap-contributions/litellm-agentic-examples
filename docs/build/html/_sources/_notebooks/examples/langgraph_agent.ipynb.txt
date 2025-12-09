@@ -1,0 +1,331 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "727aa9ee79825789",
+   "metadata": {},
+   "source": [
+    "# Langgraph example with LiteLLM and SAP LLMs\n",
+    "\n",
+    "## [How Langgraph works](https://docs.langchain.com/oss/python/langgraph/quickstart#use-the-functional-api)\n",
+    "\n",
+    "## Installation"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "51aa3933fcc9ef4e",
+   "metadata": {},
+   "source": [
+    "%pip install langchain langgraph langchain-litellm litellm"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "af9cf0fcda576131",
+   "metadata": {},
+   "source": [
+    "## Credentials for SAP Gen AI Hub\n",
+    "Get the service key from your SAP BTP tenant with AI subscription.\n",
+    "\n",
+    "Add the following variables from the service key in a file called \".env\" and put it in the same folder where you run the notebook:\n",
+    "```\n",
+    "AICORE_AUTH_URL=\"https://* * * .authentication.sap.hana.ondemand.com/oauth/token\",\n",
+    "AICORE_CLIENT_ID=\" *** \",\n",
+    "AICORE_CLIENT_SECRET=\" *** \",\n",
+    "AICORE_RESOURCE_GROUP=\" *** \",\n",
+    "AICORE_BASE_URL=\"https://api.ai.***.cfapps.sap.hana.ondemand.com/\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8aeaee7d81e9cf41",
+   "metadata": {},
+   "source": [
+    "## Run the Langgraph with LiteLLM and SAP LLMs"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "da05b867",
+   "metadata": {
+    "jupyter": {
+     "is_executing": true
+    }
+   },
+   "outputs": [],
+   "source": [
+    "from langchain.tools import tool\n",
+    "from langchain_litellm import ChatLiteLLM\n",
+    "from langgraph.graph import add_messages\n",
+    "from langchain_core.messages import (\n",
+    "    SystemMessage,\n",
+    "    HumanMessage,\n",
+    "    ToolCall,\n",
+    ")\n",
+    "from langchain_core.messages import BaseMessage\n",
+    "from langgraph.func import entrypoint, task\n",
+    "from dotenv import load_dotenv"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "51e150f3e676a88f",
+   "metadata": {},
+   "source": [
+    "Load your credentials as environment variables that Litellm can use automatically."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "df5f0b9d6b7a152d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "load_dotenv()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9addbd58",
+   "metadata": {},
+   "source": [
+    "Define the model with the SAP LLM."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "f87a9ed5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "model = ChatLiteLLM(model=\"sap/gpt-4o\", temperature=0)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "25144dab",
+   "metadata": {
+    "lines_to_next_cell": 2
+   },
+   "source": [
+    "Define the agent tool"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "83946925",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "@tool\n",
+    "def get_weather(city: str):\n",
+    "    \"\"\"\n",
+    "    Returns weather information for a given city.\n",
+    "    :param city:\n",
+    "    :return: weather information\n",
+    "    \"\"\"\n",
+    "    city_normalized = city.lower().replace(\" \", \"\")\n",
+    "\n",
+    "    mock_weather_db = {\n",
+    "        \"newyork\": \"The weather in New York is sunny with a temperature of 25°C.\",\n",
+    "        \"london\": \"It's cloudy in London with a temperature of 15°C.\",\n",
+    "        \"tokyo\": \"Tokyo is experiencing light rain and a temperature of 18°C.\",\n",
+    "    }\n",
+    "\n",
+    "    if city_normalized in mock_weather_db:\n",
+    "        return mock_weather_db[city_normalized]\n",
+    "    else:\n",
+    "        return f\"The weather in {city} is sunny with a temperature of 20°C.\""
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4673e6ff",
+   "metadata": {},
+   "source": [
+    "Augment the LLM with tools"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "8c534f1b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "tools = [get_weather]\n",
+    "tools_by_name = {tool.name: tool for tool in tools}\n",
+    "model_with_tools = model.bind_tools(tools)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8c2f5c58",
+   "metadata": {
+    "lines_to_next_cell": 2
+   },
+   "source": [
+    "Define model node"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b1d0673f",
+   "metadata": {
+    "lines_to_next_cell": 2
+   },
+   "outputs": [],
+   "source": [
+    "@task\n",
+    "def call_llm(messages: list[BaseMessage]):\n",
+    "    \"\"\"LLM decides whether to call a tool or not\"\"\"\n",
+    "    return model_with_tools.invoke(\n",
+    "        [\n",
+    "            SystemMessage(\n",
+    "                content=\"You are a helpful weather assistant. \"\n",
+    "                \"When the user asks you about a specific city, \"\n",
+    "                \"use the 'get_weather' tool to find the information about the weather. \"\n",
+    "                \"Answer with a TV weather report in two sentences, including a small joke.\"\n",
+    "            )\n",
+    "        ]\n",
+    "        + messages\n",
+    "    )"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5b2d2f88",
+   "metadata": {
+    "lines_to_next_cell": 2
+   },
+   "source": [
+    "Define tool node"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d5e60be1",
+   "metadata": {
+    "lines_to_next_cell": 2
+   },
+   "outputs": [],
+   "source": [
+    "@task\n",
+    "def call_tool(tool_call: ToolCall):\n",
+    "    \"\"\"Performs the tool call\"\"\"\n",
+    "    tool = tools_by_name[tool_call[\"name\"]]\n",
+    "    return tool.invoke(tool_call)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "6c986fe6",
+   "metadata": {
+    "lines_to_next_cell": 2
+   },
+   "source": [
+    "Define agent"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "64d7cde4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "@entrypoint()\n",
+    "def agent(messages: list[BaseMessage]):\n",
+    "    model_response = call_llm(messages).result()\n",
+    "\n",
+    "    while True:\n",
+    "        if not model_response.tool_calls:\n",
+    "            break\n",
+    "\n",
+    "        # Execute tools\n",
+    "        tool_result_futures = [\n",
+    "            call_tool(tool_call) for tool_call in model_response.tool_calls\n",
+    "        ]\n",
+    "        tool_results = [fut.result() for fut in tool_result_futures]\n",
+    "        messages = add_messages(messages, [model_response, *tool_results])\n",
+    "        model_response = call_llm(messages).result()\n",
+    "\n",
+    "    messages = add_messages(messages, model_response)\n",
+    "    return messages"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5e26d2b8b7945c92",
+   "metadata": {},
+   "source": [
+    "User can select a city."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "a3193df5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "city = 'London'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f9ec54e1ed74ea2",
+   "metadata": {},
+   "source": [
+    "Run invoke"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "594b5627d52f9e53",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "input_message = [HumanMessage(content=f\"What's the weather in {city}?\")]\n",
+    "for chunk in agent.stream(input_message, stream_mode=\"updates\"):\n",
+    "    print(chunk)\n",
+    "    print(\"\\n\")"
+   ]
+  }
+ ],
+ "metadata": {
+  "jupytext": {
+   "cell_metadata_filter": "-all",
+   "main_language": "python",
+   "notebook_metadata_filter": "-all"
+  },
+  "kernelspec": {
+   "display_name": ".venv",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.8"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

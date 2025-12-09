@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AG2 example connecting to Sap Generative AI Hub via LiteLLM Proxy &mdash; Agentic examples LiteLLM Gen AI Hub 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="LiteLLM Proxy example with SAP LLMs" href="../proxy_set_up.html" />
+    <link rel="prev" title="AgentScope example connecting to Sap Generative AI Hub via LiteLLM" href="agentscope_litellm.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Agentic examples LiteLLM Gen AI Hub
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Agent Framework Examples:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="langgraph_agent.html">Langgraph example with LiteLLM and SAP LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crewai_litellm_lib.html">CrewAI example connecting to Sap Generative AI Hub via LiteLLM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crewai_litellm_proxy.html">CrewAI Proxy example connecting to Sap Generative AI Hub via LiteLLM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pydantic_ai_litellm_proxy.html">PydanticAI example with LiteLLM Proxy and SAP LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="google_adk.html">Google ADK example connecting to Sap Generative AI Hub via LiteLLM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openai_adk.html">OpenAI ADK example with LiteLLM and SAP LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws_strands.html">AWS Strands Agents example connecting to Sap Generative AI Hub via LiteLLM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LlamaIndex_litellm.html">LlamaIndex example with LiteLLM and SAP LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smolagents_litellm.html">Smolagents example with LiteLLM and SAP LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microsoft_agent_litellm_proxy.html">Microsoft Agents example with LiteLLM Proxy and SAP LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agentscope_litellm.html">AgentScope example connecting to Sap Generative AI Hub via LiteLLM</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AG2 example connecting to Sap Generative AI Hub via LiteLLM Proxy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#How-AG2-works">How AG2 works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#LLM-access-via-LiteLLM-Proxy">LLM access via LiteLLM Proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Set-env-variables">Set env variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Run-the-CrewAI-with-LiteLLM-and-SAP-LLMs">Run the CrewAI with LiteLLM and SAP LLMs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proxy_set_up.html">LiteLLM Proxy example with SAP LLMs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Agentic examples LiteLLM Gen AI Hub</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AG2 example connecting to Sap Generative AI Hub via LiteLLM Proxy</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/_notebooks/examples/ag2_litellm_proxy.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="AG2-example-connecting-to-Sap-Generative-AI-Hub-via-LiteLLM-Proxy">
+<h1>AG2 example connecting to Sap Generative AI Hub via LiteLLM Proxy<a class="headerlink" href="#AG2-example-connecting-to-Sap-Generative-AI-Hub-via-LiteLLM-Proxy" title="Link to this heading"></a></h1>
+<section id="How-AG2-works">
+<h2><a class="reference external" href="https://docs.ag2.ai/latest/">How AG2 works</a><a class="headerlink" href="#How-AG2-works" title="Link to this heading"></a></h2>
+</section>
+<section id="LLM-access-via-LiteLLM-Proxy">
+<h2>LLM access via LiteLLM Proxy<a class="headerlink" href="#LLM-access-via-LiteLLM-Proxy" title="Link to this heading"></a></h2>
+<p>AG2 supports the <a class="reference external" href="https://docs.ag2.ai/latest/docs/user-guide/models/litellm-proxy-server/installation/">LiteLLM Proxy</a> for access via OpenAI API calls.</p>
+</section>
+<section id="Installation">
+<h2>Installation<a class="headerlink" href="#Installation" title="Link to this heading"></a></h2>
+<p>Follow details in <a class="reference internal" href="../proxy_set_up.html"><span class="doc">LiteLLM Proxy setup for SAP Gen. AI Hub</span></a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="s2">&quot;ag2[openai]&quot;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Set-env-variables">
+<h2>Set env variables<a class="headerlink" href="#Set-env-variables" title="Link to this heading"></a></h2>
+<p>Add the following variables from the service key in a file called “.env” and put it in the same folder where you run the notebook:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>LITELLM_PROXY_API_KEY=sk-1234
+PROXY_BASE_URL=http://localhost:4000
+</pre></div>
+</div>
+</section>
+<section id="Run-the-CrewAI-with-LiteLLM-and-SAP-LLMs">
+<h2>Run the CrewAI with LiteLLM and SAP LLMs<a class="headerlink" href="#Run-the-CrewAI-with-LiteLLM-and-SAP-LLMs" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">litellm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autogen</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConversableAgent</span><span class="p">,</span> <span class="n">LLMConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autogen.agentchat</span><span class="w"> </span><span class="kn">import</span> <span class="n">initiate_group_chat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">autogen.agentchat.group.patterns</span><span class="w"> </span><span class="kn">import</span> <span class="n">AutoPattern</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+</pre></div>
+</div>
+</div>
+<p>Load your credentials as environment variables.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">litellm</span><span class="o">.</span><span class="n">use_litellm_proxy</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+<span class="n">api_base</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;PROXY_BASE_URL&quot;</span><span class="p">)</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;LITELLM_PROXY_API_KEY&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Set up the model with your proxy params</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">llm_config</span> <span class="o">=</span> <span class="n">LLMConfig</span><span class="p">(</span><span class="n">config_list</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;sap/gpt-4o&quot;</span><span class="p">,</span> <span class="s2">&quot;base_url&quot;</span><span class="p">:</span> <span class="n">api_base</span><span class="p">,</span> <span class="s2">&quot;api_key&quot;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<p>Define the agent tools.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_weather</span><span class="p">(</span><span class="n">city</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Moke function&quot;&quot;&quot;</span>
+    <span class="n">city_normalized</span> <span class="o">=</span> <span class="n">city</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">mock_weather_db</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;newyork&quot;</span><span class="p">:</span> <span class="s2">&quot;The weather in New York is sunny with a temperature of 25°C.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;london&quot;</span><span class="p">:</span> <span class="s2">&quot;It&#39;s cloudy in London with a temperature of 15°C.&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tokyo&quot;</span><span class="p">:</span> <span class="s2">&quot;Tokyo is experiencing light rain and a temperature of 18°C.&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">city_normalized</span> <span class="ow">in</span> <span class="n">mock_weather_db</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">mock_weather_db</span><span class="p">[</span><span class="n">city_normalized</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;The weather in </span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2"> is sunny with a temperature of 20°C.&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Define the function for check if agent conversation is finished</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_termination_msg</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="n">content</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;content&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">content</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;==== REPORT GENERATED ====&quot;</span> <span class="ow">in</span> <span class="n">content</span>
+</pre></div>
+</div>
+</div>
+<p>Define the Agent with the SAP LLM and the tool.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">assistant</span> <span class="o">=</span> <span class="n">ConversableAgent</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+                             <span class="n">llm_config</span><span class="o">=</span><span class="n">llm_config</span><span class="p">,</span>
+                             <span class="n">system_message</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                                        You are a helpful weather assistant.</span>
+<span class="s2">                                        When the user asks for the weather in a specific city, use the &#39;get_weather&#39; tool to find the information.</span>
+<span class="s2">                                        If the tool returns an error, inform the user politely.</span>
+<span class="s2">                                        If the tool is successful, write a couple sentences for a TV weather report in the given city including a small joke.&quot;</span>
+<span class="s2">                                        Once you&#39;ve generated the report append this to the summary:</span>
+<span class="s2">                                        ==== REPORT GENERATED ====</span>
+<span class="s2">                                        &quot;&quot;&quot;</span><span class="p">,</span>
+                             <span class="n">functions</span><span class="o">=</span><span class="p">[</span><span class="n">get_weather</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<p>Set up the conversation pattern with the agent, model and function for conversation termination</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pattern</span> <span class="o">=</span> <span class="n">AutoPattern</span><span class="p">(</span><span class="n">initial_agent</span><span class="o">=</span><span class="n">assistant</span><span class="p">,</span>
+                      <span class="n">agents</span><span class="o">=</span><span class="p">[</span><span class="n">assistant</span><span class="p">],</span>
+                      <span class="n">group_manager_args</span><span class="o">=</span><span class="p">{</span>
+                          <span class="s2">&quot;llm_config&quot;</span><span class="p">:</span> <span class="n">llm_config</span><span class="p">,</span>
+                          <span class="s2">&quot;is_termination_msg&quot;</span><span class="p">:</span> <span class="n">is_termination_msg</span>
+                      <span class="p">},</span>
+                      <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Run the conversation with message</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">initiate_group_chat</span><span class="p">(</span><span class="n">pattern</span><span class="o">=</span><span class="n">pattern</span><span class="p">,</span>
+                                   <span class="n">messages</span><span class="o">=</span><span class="s2">&quot;What is the weather like in Tbilisi?&quot;</span><span class="p">,</span>
+                                   <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="agentscope_litellm.html" class="btn btn-neutral float-left" title="AgentScope example connecting to Sap Generative AI Hub via LiteLLM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../proxy_set_up.html" class="btn btn-neutral float-right" title="LiteLLM Proxy example with SAP LLMs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Vasilisa Karim Mathis.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

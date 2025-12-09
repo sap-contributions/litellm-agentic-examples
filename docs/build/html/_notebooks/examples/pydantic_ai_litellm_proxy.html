@@ -1,0 +1,249 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PydanticAI example with LiteLLM Proxy and SAP LLMs &mdash; Agentic examples LiteLLM Gen AI Hub 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Google ADK example connecting to Sap Generative AI Hub via LiteLLM" href="google_adk.html" />
+    <link rel="prev" title="CrewAI Proxy example connecting to Sap Generative AI Hub via LiteLLM" href="crewai_litellm_proxy.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Agentic examples LiteLLM Gen AI Hub
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Agent Framework Examples:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="langgraph_agent.html">Langgraph example with LiteLLM and SAP LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crewai_litellm_lib.html">CrewAI example connecting to Sap Generative AI Hub via LiteLLM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crewai_litellm_proxy.html">CrewAI Proxy example connecting to Sap Generative AI Hub via LiteLLM</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PydanticAI example with LiteLLM Proxy and SAP LLMs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#How-PydanticAI-works">How PydanticAI works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#LiteLLM-Proxy-setup-for-SAP-models">LiteLLM Proxy setup for SAP models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Set-env-variables">Set env variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Run-the-PydanticAI-with-LiteLLM-and-SAP-LLMs">Run the PydanticAI with LiteLLM and SAP LLMs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="google_adk.html">Google ADK example connecting to Sap Generative AI Hub via LiteLLM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openai_adk.html">OpenAI ADK example with LiteLLM and SAP LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws_strands.html">AWS Strands Agents example connecting to Sap Generative AI Hub via LiteLLM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LlamaIndex_litellm.html">LlamaIndex example with LiteLLM and SAP LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="smolagents_litellm.html">Smolagents example with LiteLLM and SAP LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="microsoft_agent_litellm_proxy.html">Microsoft Agents example with LiteLLM Proxy and SAP LLMs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agentscope_litellm.html">AgentScope example connecting to Sap Generative AI Hub via LiteLLM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ag2_litellm_proxy.html">AG2 example connecting to Sap Generative AI Hub via LiteLLM Proxy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../proxy_set_up.html">LiteLLM Proxy example with SAP LLMs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Agentic examples LiteLLM Gen AI Hub</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">PydanticAI example with LiteLLM Proxy and SAP LLMs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/_notebooks/examples/pydantic_ai_litellm_proxy.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="PydanticAI-example-with-LiteLLM-Proxy-and-SAP-LLMs">
+<h1>PydanticAI example with LiteLLM Proxy and SAP LLMs<a class="headerlink" href="#PydanticAI-example-with-LiteLLM-Proxy-and-SAP-LLMs" title="Link to this heading"></a></h1>
+<section id="How-PydanticAI-works">
+<h2><a class="reference external" href="https://ai.pydantic.dev/agents/">How PydanticAI works</a><a class="headerlink" href="#How-PydanticAI-works" title="Link to this heading"></a></h2>
+</section>
+<section id="LiteLLM-Proxy-setup-for-SAP-models">
+<h2><a class="reference internal" href="../proxy_set_up.html"><span class="doc">LiteLLM Proxy setup for SAP models</span></a><a class="headerlink" href="#LiteLLM-Proxy-setup-for-SAP-models" title="Link to this heading"></a></h2>
+</section>
+<section id="Installation">
+<h2>Installation<a class="headerlink" href="#Installation" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-none notranslate"><div class="highlight"><pre><span></span>%pip install pydantic-ai litellm
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Set-env-variables">
+<h2>Set env variables<a class="headerlink" href="#Set-env-variables" title="Link to this heading"></a></h2>
+<p>Add the following variables from the service key in a file called “.env” and put it in the same folder where you run the notebook:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>LITELLM_PROXY_API_KEY=sk-1234
+PROXY_BASE_URL=http://localhost:4000
+</pre></div>
+</div>
+</section>
+<section id="Run-the-PydanticAI-with-LiteLLM-and-SAP-LLMs">
+<h2>Run the PydanticAI with LiteLLM and SAP LLMs<a class="headerlink" href="#Run-the-PydanticAI-with-LiteLLM-and-SAP-LLMs" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-none notranslate"><div class="highlight"><pre><span></span>import os
+
+import litellm
+from dotenv import load_dotenv
+from pydantic_ai import Agent, RunContext
+from pydantic_ai.models.openai import OpenAIChatModel
+from pydantic_ai.providers.litellm import LiteLLMProvider
+</pre></div>
+</div>
+</div>
+<p>Load your credentials as environment variables.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-none notranslate"><div class="highlight"><pre><span></span>litellm.use_litellm_proxy = True
+load_dotenv()
+api_base = os.getenv(&quot;PROXY_BASE_URL&quot;)
+api_key = os.getenv(&quot;LITELLM_PROXY_API_KEY&quot;)
+</pre></div>
+</div>
+</div>
+<p>Define the model with OpenAIChatModel object with LiteLLMProvider object with your proxy credentials</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-none notranslate"><div class="highlight"><pre><span></span>model = OpenAIChatModel(
+    &quot;sap/gpt-5&quot;,
+    provider=LiteLLMProvider(
+        api_base=api_base,
+        api_key=api_key,
+    ),
+)
+</pre></div>
+</div>
+</div>
+<p>Define the agent</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-none notranslate"><div class="highlight"><pre><span></span>agent = Agent(
+    model=model,
+    system_prompt=&quot;You are a helpful weather assistant. &quot;
+    &quot;When the user send you asks a specific city, &quot;
+    &quot;use the &#39;get_weather&#39; tool to find the information about the weather. &quot;
+    &quot;Aser with TV weather report in two sentences, include small jok&quot;,
+)
+</pre></div>
+</div>
+</div>
+<p>Define the agent tool.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-none notranslate"><div class="highlight"><pre><span></span>@agent.tool
+def get_weather(city: RunContext[str]) -&gt; str:
+    &quot;&quot;&quot;Mock function&quot;&quot;&quot;
+    city_normalized = city.prompt.lower().replace(&quot; &quot;, &quot;&quot;)
+
+    mock_weather_db = {
+        &quot;newyork&quot;: &quot;The weather in New York is sunny with a temperature of 25°C.&quot;,
+        &quot;london&quot;: &quot;It&#39;s cloudy in London with a temperature of 15°C.&quot;,
+        &quot;tokyo&quot;: &quot;Tokyo is experiencing light rain and a temperature of 18°C.&quot;,
+    }
+
+    if city_normalized in mock_weather_db:
+        return mock_weather_db[city_normalized]
+    else:
+        return f&quot;The weather in {city} is sunny with a temperature of 20°C.&quot;
+</pre></div>
+</div>
+</div>
+<p>Run agent</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-none notranslate"><div class="highlight"><pre><span></span>result = await agent.run(&quot;London&quot;)
+print(result.output)
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="crewai_litellm_proxy.html" class="btn btn-neutral float-left" title="CrewAI Proxy example connecting to Sap Generative AI Hub via LiteLLM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="google_adk.html" class="btn btn-neutral float-right" title="Google ADK example connecting to Sap Generative AI Hub via LiteLLM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Vasilisa Karim Mathis.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
