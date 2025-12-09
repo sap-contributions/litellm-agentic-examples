@@ -3,10 +3,10 @@ The examples below showcase how to use different agentic frameworks with the SAP
 Users can access LLMs across all vendors (OpenAI, Google, Amazon, Mistral, SAP, ...) available in the Generative AI Hub.
 Each framework example is described in a separate jupyter notebook.
 
-📚 **[View Full Documentation](https://sap.github.io/sap-contributions/litellm-agentic-examples)** 📚
+📚 **[View Online documentation](https://sap-contribution.github.io/litellm-agentic-examples/)** 📚
 
 ## Prerequisites
-- AI Core Gen AI subscription via BTP tenant.
+- [AI Core Gen AI subscription via BTP tenant.](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/enabling-service-in-cloud-foundry)
 - Install latest Litellm (including SAP provider).
 
 ## 1. Langgraph
