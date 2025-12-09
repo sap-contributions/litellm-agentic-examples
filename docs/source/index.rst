@@ -4,16 +4,17 @@
    contain the root `toctree` directive.
 
 Welcome to Agentic examples for LiteLLM and SAP Gen AI Hub's documentation!
-===============================================================
+===========================================================================
 
 This repository contains examples of using various Agent Development Kits (ADKs)
 with SAP's Generative AI Hub via LiteLLM. Users can access LLMs across all vendors
 (OpenAI, Google, Amazon, Mistral, SAP, etc.) available in the Generative AI Hub.
 
 Prerequisites
-=================
+-------------
 SAP AI Core Gen AI subscription via SAP BTP tenant:
-(https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/enabling-service-in-cloud-foundry)
+
+https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/enabling-service-in-cloud-foundry
 
 .. toctree::
    :maxdepth: 2
