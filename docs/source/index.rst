@@ -26,6 +26,7 @@ with SAP's Generative AI Hub via LiteLLM. Users can access LLMs across all vendo
    _notebooks/microsoft_agent_litellm_proxy.ipynb
    _notebooks/agentscope_litellm.ipynb
    _notebooks/ag2_litellm_proxy.ipynb
+   _notebooks/proxy_set_up.ipynb
 
 Indices and tables
 ==================

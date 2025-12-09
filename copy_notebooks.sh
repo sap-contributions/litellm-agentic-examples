@@ -20,5 +20,6 @@ cp -r smolagents_example/*.ipynb docs/source/_notebooks/
 cp -r microsoft_agent_example/*.ipynb docs/source/_notebooks/
 cp -r agentscope_example/*.ipynb docs/source/_notebooks/
 cp -r ag2_example/*.ipynb docs/source/_notebooks/
+cp -r proxy_setup_up.ipynb docs/source/_notebooks/
 
 echo "Notebooks copied successfully!"
