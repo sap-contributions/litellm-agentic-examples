@@ -14,18 +14,18 @@ with SAP's Generative AI Hub via LiteLLM. Users can access LLMs across all vendo
    :maxdepth: 2
    :caption: Agent Framework Examples:
 
-   _notebooks/langgraph_agent.ipynb
-   _notebooks/crewai_litellm_lib.ipynb
-   _notebooks/crewai_litellm_proxy.ipynb
-   _notebooks/pydantic_ai_litellm_proxy.ipynb
-   _notebooks/google_adk.ipynb
-   _notebooks/openai_adk.ipynb
-   _notebooks/aws_strands.ipynb
-   _notebooks/LlamaIndex_litellm.ipynb
-   _notebooks/smolagents_litellm.ipynb
-   _notebooks/microsoft_agent_litellm_proxy.ipynb
-   _notebooks/agentscope_litellm.ipynb
-   _notebooks/ag2_litellm_proxy.ipynb
+   _notebooks/examples/langgraph_agent.ipynb
+   _notebooks/examples/crewai_litellm_lib.ipynb
+   _notebooks/examples/crewai_litellm_proxy.ipynb
+   _notebooks/examples/pydantic_ai_litellm_proxy.ipynb
+   _notebooks/examples/google_adk.ipynb
+   _notebooks/examples/openai_adk.ipynb
+   _notebooks/examples/aws_strands.ipynb
+   _notebooks/examples/LlamaIndex_litellm.ipynb
+   _notebooks/examples/smolagents_litellm.ipynb
+   _notebooks/examples/microsoft_agent_litellm_proxy.ipynb
+   _notebooks/examples/agentscope_litellm.ipynb
+   _notebooks/examples/ag2_litellm_proxy.ipynb
    _notebooks/proxy_set_up.ipynb
 
 Indices and tables
