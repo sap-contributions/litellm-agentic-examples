@@ -1,9 +1,14 @@
 # Agentic Examples for SAP Generative AI Hub
+
+[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://sap-contributions.github.io/litellm-agentic-examples/)
+
+[//]: # ([![License]&#40;https://img.shields.io/github/license/sap-contributions/litellm-agentic-examples&#41;]&#40;LICENSE&#41;)
+
 The examples below showcase how to use different agentic frameworks with the SAP provider via LiteLMM.
 Users can access LLMs across all vendors (OpenAI, Google, Amazon, Mistral, SAP, ...) available in the Generative AI Hub.
 Each framework example is described in a separate jupyter notebook.
 
-📚 **[View Online documentation](https://sap-contribution.github.io/litellm-agentic-examples/)** 📚
+📚 **[View Online documentation](https://sap-contributions.github.io/litellm-agentic-examples/)** 📚
 
 ## Prerequisites
 - [AI Core Gen AI subscription via BTP tenant.](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/enabling-service-in-cloud-foundry)
