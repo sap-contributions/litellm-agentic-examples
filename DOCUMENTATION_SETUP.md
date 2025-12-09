@@ -1,0 +1,184 @@
+# Documentation Setup Guide
+
+This repository has Sphinx documentation that is automatically generated from Jupyter notebooks and committed to the repository for easy access.
+
+## Overview
+
+The documentation system is **already configured** and ready to use:
+- All 12 Jupyter notebooks are included in the documentation
+- GitHub Actions workflow automatically builds and commits documentation
+- Built documentation is accessible directly from the repository at `docs/build/html/`
+
+## How It Works
+
+1. **Automatic Building**: When you push changes to the `main` branch, a GitHub Actions workflow:
+   - Installs Sphinx and dependencies from `requirements-docs.txt`
+   - Builds HTML documentation from all Jupyter notebooks
+   - Commits the generated files to `docs/build/html/`
+   - Pushes back to the repository
+
+2. **Accessing Documentation**:
+   - **In Repository**: Navigate to `docs/build/html/index.html` on GitHub
+   - **Locally**: Clone the repo and open `docs/build/html/index.html` in a browser
+   - **After Local Build**: Run Sphinx locally (see below) and view the results
+
+## Local Documentation Build
+
+To build the documentation locally:
+
+```bash
+# Install documentation dependencies
+pip install -r requirements-docs.txt
+
+# Build the documentation
+sphinx-build -b html docs/source docs/build/html
+
+# View the result
+open docs/build/html/index.html  # macOS
+# or
+xdg-open docs/build/html/index.html  # Linux
+# or
+start docs/build/html/index.html  # Windows
+```
+
+## Project Structure
+
+```
+.
+├── docs/
+│   ├── source/
+│   │   ├── conf.py          # Sphinx configuration
+│   │   └── index.rst        # Main documentation page (includes all notebooks)
+│   └── build/
+│       └── html/            # Generated HTML (committed to repo)
+├── requirements-docs.txt    # Documentation dependencies
+└── .github/workflows/docs.yml  # Automated documentation workflow
+```
+
+## Configuration Details
+
+### Included Notebooks
+
+The documentation includes all example notebooks:
+- Langgraph (`langgraph_example/langgraph_agent.ipynb`)
+- CrewAI Library (`crewai_example/crewai_litellm_lib.ipynb`)
+- CrewAI Proxy (`crewai_example/crewai_litellm_proxy.ipynb`)
+- PydanticAI (`pydantic_ai_example/pydantic_ai_litellm_proxy.ipynb`)
+- Google ADK (`google_adk_example/google_adk.ipynb`)
+- OpenAI ADK (`openai_adk_example/openai_adk.ipynb`)
+- AWS Strands (`aws_strands_example/aws_strands.ipynb`)
+- LlamaIndex (`LlamaIndex_example/LlamaIndex_litellm.ipynb`)
+- SmoLAgents (`smolagents_example/smolagents_litellm.ipynb`)
+- Microsoft Agent (`microsoft_agent_example/microsoft_agent_litellm_proxy.ipynb`)
+- AgentScope (`agentscope_example/agentscope_litellm.ipynb`)
+- AG2 (`ag2_example/ag2_litellm_proxy.ipynb`)
+
+### Sphinx Configuration (`docs/source/conf.py`)
+
+Key settings:
+- **Extensions**: `nbsphinx` for Jupyter notebook rendering, `sphinx.ext.mathjax` for math
+- **Theme**: `sphinx_rtd_theme` (Read the Docs theme)
+- **nbsphinx settings**:
+  - `nbsphinx_allow_errors = True` - Continue building even if notebooks have errors
+  - `nbsphinx_execute = 'never'` - Don't execute notebooks during build
+
+### Dependencies (`requirements-docs.txt`)
+
+```
+sphinx>=7.0
+sphinx-rtd-theme
+nbsphinx
+pandoc
+ipython
+```
+
+## Modifying Documentation
+
+### Adding New Notebooks
+
+To add a new notebook to the documentation:
+
+1. Add the notebook path to `docs/source/index.rst` in the `toctree` section:
+   ```rst
+   .. toctree::
+      :maxdepth: 2
+      :caption: Agent Framework Examples:
+
+      ../../path/to/your/new_notebook.ipynb
+   ```
+
+2. Push your changes - the workflow will automatically rebuild the documentation
+
+### Updating Configuration
+
+To modify Sphinx settings, edit `docs/source/conf.py`. Common modifications:
+- Change theme or theme options
+- Add additional Sphinx extensions
+- Modify nbsphinx behavior
+- Customize HTML output
+
+### Manual Workflow Trigger
+
+You can manually trigger the documentation build:
+1. Go to the Actions tab in GitHub
+2. Select "Build Documentation" workflow
+3. Click "Run workflow"
+
+## Troubleshooting
+
+### Build Fails Locally
+
+**Problem**: `No module named 'sphinx'`
+**Solution**: Install dependencies: `pip install -r requirements-docs.txt`
+
+### Notebooks Don't Render
+
+**Problem**: Notebooks appear as raw text
+**Solution**: Ensure `nbsphinx` is in `extensions` list in `conf.py`
+
+### Workflow Fails to Commit
+
+**Problem**: GitHub Actions workflow fails at commit step
+**Solution**: Check that the workflow has write permissions (set in `.github/workflows/docs.yml`)
+
+### Large Documentation Size
+
+**Problem**: Repository size grows due to committed HTML
+**Solution**: This is expected. The HTML files are committed for easy access. If size becomes an issue, consider using GitHub Pages deployment instead.
+
+## Advanced Topics
+
+### Customizing the Theme
+
+Edit `docs/source/conf.py` to customize the Read the Docs theme:
+
+```python
+html_theme_options = {
+    'navigation_depth': 4,
+    'titles_only': False,
+    'collapse_navigation': False,
+}
+```
+
+### Adding Custom CSS/JavaScript
+
+1. Create files in `docs/source/_static/`
+2. Reference them in `conf.py`:
+   ```python
+   html_static_path = ['_static']
+   html_css_files = ['custom.css']
+   html_js_files = ['custom.js']
+   ```
+
+### Excluding Specific Notebooks
+
+To exclude a notebook from documentation:
+1. Remove it from the `toctree` in `docs/source/index.rst`
+2. The workflow will still build successfully
+
+## Notes
+
+- The repository is a collection of examples, not an installable library
+- Documentation dependencies are managed separately in `requirements-docs.txt`
+- The `.gitignore` is configured to commit `docs/build/html/` while ignoring build artifacts
+- The workflow includes `[skip ci]` in commit messages to prevent infinite loops

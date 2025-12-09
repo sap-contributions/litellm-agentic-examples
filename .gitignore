@@ -69,7 +69,10 @@ instance/
 .scrapy
 
 # Sphinx documentation
+# Note: docs/build/html is committed to repo for documentation access
 docs/_build/
+docs/build/doctrees/
+docs/build/.buildinfo
 
 # PyBuilder
 .pybuilder/
@@ -143,6 +146,12 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Tokens and credentials
+github_token
+*_token
+*.pem
+*.key
 
 # Spyder project settings
 .spyderproject
