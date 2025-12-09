@@ -52,7 +52,7 @@ jobs:
           # Check if docs/build/html exists and has content
           if [ -d "docs/build/html" ] && [ "$(ls -A docs/build/html)" ]; then
             echo "Documentation built successfully, committing changes..."
-            git add docs/build/html
+            git add -f docs/build/html
 
             # Check if there are changes to commit
             if git diff --staged --quiet; then
