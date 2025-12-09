@@ -11,8 +11,8 @@ Each framework example is described in a separate jupyter notebook.
 📚 **[View Online documentation](https://sap-contributions.github.io/litellm-agentic-examples/)** 📚
 
 ## Prerequisites
-- [AI Core Gen AI subscription via BTP tenant.](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/enabling-service-in-cloud-foundry)
-- Install latest Litellm (including SAP provider).
+- [SAP AI Core Gen AI subscription via SAP BTP tenant.](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/enabling-service-in-cloud-foundry)
+- Install latest Litellm (includes SAP provider).
 
 ## 1. Langgraph
 * [langgraph_agent notebook](langgraph_example/langgraph_agent.ipynb)
