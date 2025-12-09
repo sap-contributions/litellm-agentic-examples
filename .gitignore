@@ -70,8 +70,8 @@ instance/
 
 # Sphinx documentation
 # Note: docs/build/html is committed to repo for documentation access
-docs/_build/
-docs/build/doctrees/
+# docs/_build/
+docs/build/.doctrees/
 docs/build/.buildinfo
 docs/source/_notebooks/
 
