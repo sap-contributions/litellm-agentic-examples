@@ -1,3 +1,5 @@
+# https://ai.pydantic.dev/agents/
+
 from pydantic_ai import Agent, RunContext
 from pydantic_ai.models.openai import OpenAIChatModel
 from pydantic_ai.providers.litellm import LiteLLMProvider
@@ -20,7 +22,7 @@ model = OpenAIChatModel(
 agent = Agent(
     model=model,
     system_prompt="You are a helpful weather assistant. "
-    "When the user for a specific city, "
+    "When the user asks for a specific city, "
     "use the 'get_weather' tool to find the information about the weather. "
     "Answer with a TV weather report in two sentences including a small joke.",
 )

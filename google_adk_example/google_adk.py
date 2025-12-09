@@ -52,13 +52,13 @@ model = LiteLlm(model="sap/gpt-4.1")
 weather_agent = Agent(
     name="weather_agent",
     model=model,
-    description=f"Prepare a couple sentences TV speach about weather in the given city, "
+    description=f"Prepare a couple of sentences TV speach about weather in the given city, "
                 f"using information from run the get_weather tool",
     instruction="You are a helpful weather assistant. "
                 "When the user asks for the weather in a specific city, "
                 "use the 'get_weather' tool to find the information. "
                 "If the tool returns an error, inform the user politely. "
-                "If the tool is successful, write a couple sentences for a "
+                "If the tool is successful, write a couple of sentences for a "
                 "TV weather report in the given city including a small joke.",
     tools=[get_weather],
 )

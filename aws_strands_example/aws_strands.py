@@ -24,9 +24,9 @@ def get_weather(city: str):
 
 agent = Agent(
     system_prompt="You are a helpful weather assistant. "
-            "When the user send you asks a specific city, "
-            "use the 'get_weather' tool to find the information about the weather. "
-            "Aser with TV weather report in two sentences, include small jok",
+            "When the user asks about a specific city, "
+            "use the 'get_weather' tool to find the weather information. "
+            "Provide the TV weather report in two sentences including a small joke.",
     model=LiteLLMModel(model_id="sap/gpt-5"),
     tools=[get_weather],
 )

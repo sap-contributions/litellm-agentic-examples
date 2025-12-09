@@ -22,16 +22,16 @@ Each framework example is described in a separate jupyter notebook.
 * [crewai_litellm_proxy notebook](crewai_example/crewai_litellm_proxy.ipynb)
 
 ## 3. PydanticAI
-* [pydanticai_litellm notebook](pydanticai_example/pydanticai_litellm.ipynb)
+* [pydanticai_litellm_proxy notebook](pydantic_ai_example/pydantic_ai_litellm_proxy.ipynb)
 
 ## 4. Google ADK
 * [google_adk notebook](google_adk_example/google_adk.ipynb)
 
 ## 5. OpenAI ADK
-* [openai_adk.py](openai_adk_example/openai_adk.ipynb)
+* [openai_adk notebook](openai_adk_example/openai_adk.ipynb)
 
 ## 6. AWS
-* [aws_strands notebook](aws_strands_example/aws_strand.ipynb)
+* [aws_strands notebook](aws_strands_example/aws_strands.ipynb)
 
 ## 7. LlamaIndex
 * [Llamaindex_litellm notebook](Llamaindex_example/Llamaindex_litellm.ipynb)
@@ -39,8 +39,8 @@ Each framework example is described in a separate jupyter notebook.
 ## 8. smolagents
 * [smolagents_litellm notebook](smolagents_example/smolagents_litellm.ipynb)
 
-## 9. MSFT Agent Framework
-* [msft_agent_litellm notebook](msft_agent_example/msft_agent_litellm.ipynb)
+## 9. Microsoft Agent Framework
+* [microsoft_agent_litellm_proxy notebook](microsoft_agent_example/microsoft_agent_litellm_proxy.ipynb)
 
 ## 10. Agentscope
 * [agentscope_litellm notebook](agentscope_example/agentscope_litellm.ipynb)
