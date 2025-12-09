@@ -27,16 +27,21 @@ The documentation system is **already configured** and ready to use:
 To build the documentation locally:
 
 ```bash
-# Install documentation dependencies
+# 1. Install Pandoc (system package - required!)
+brew install pandoc  # macOS
+# or
+sudo apt-get install pandoc  # Linux
+
+# 2. Install Python documentation dependencies
 pip install -r requirements-docs.txt
 
-# Copy notebooks to docs source directory
+# 3. Copy notebooks to docs source directory
 ./copy_notebooks.sh
 
-# Build the documentation
+# 4. Build the documentation
 sphinx-build -b html docs/source docs/build/html
 
-# View the result
+# 5. View the result
 open docs/build/html/index.html  # macOS
 # or
 xdg-open docs/build/html/index.html  # Linux
@@ -44,7 +49,10 @@ xdg-open docs/build/html/index.html  # Linux
 start docs/build/html/index.html  # Windows
 ```
 
-**Note**: The `copy_notebooks.sh` script copies only the `.ipynb` files (not Python files or other content) from each example directory to `docs/source/_notebooks/` so Sphinx can find them. This temporary directory is excluded from git via `.gitignore`.
+**Important Notes**:
+- **Pandoc must be installed as a system package** - it's required by nbsphinx but cannot be installed via pip
+- The `copy_notebooks.sh` script copies only the `.ipynb` files (not Python files or other content) from each example directory to `docs/source/_notebooks/`
+- The `_notebooks` directory is temporary and excluded from git via `.gitignore`
 
 ## Project Structure
 
@@ -87,15 +95,21 @@ Key settings:
   - `nbsphinx_allow_errors = True` - Continue building even if notebooks have errors
   - `nbsphinx_execute = 'never'` - Don't execute notebooks during build
 
-### Dependencies (`requirements-docs.txt`)
+### Dependencies
 
+**Python packages** (`requirements-docs.txt`):
 ```
 sphinx>=7.0
 sphinx-rtd-theme
 nbsphinx
-pandoc
 ipython
 ```
+
+**System package**:
+- `pandoc` - Required by nbsphinx for converting notebooks. Install via:
+  - **macOS**: `brew install pandoc`
+  - **Linux**: `sudo apt-get install pandoc`
+  - **Windows**: Download from [pandoc.org](https://pandoc.org/installing.html)
 
 ## Modifying Documentation
 

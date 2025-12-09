@@ -1,5 +1,4 @@
 sphinx>=7.0
 sphinx-rtd-theme
 nbsphinx
-pandoc
 ipython
