@@ -6,21 +6,21 @@ This repository has Sphinx documentation that is automatically generated from Ju
 
 The documentation system is **already configured** and ready to use:
 - All 12 Jupyter notebooks are included in the documentation
-- GitHub Actions workflow automatically builds and commits documentation
-- Built documentation is accessible directly from the repository at `docs/build/html/`
+- GitHub Actions workflow automatically builds and deploys documentation to GitHub Pages
+- Built documentation is published to the `gh-pages` branch and served via GitHub Pages
 
 ## How It Works
 
 1. **Automatic Building**: When you push changes to the `main` branch, a GitHub Actions workflow:
-   - Installs Sphinx and dependencies from `requirements-docs.txt`
+   - Installs Pandoc (system package) and Sphinx dependencies from `requirements-docs.txt`
+   - Copies notebooks to a temporary `_notebooks` directory
    - Builds HTML documentation from all Jupyter notebooks
-   - Commits the generated files to `docs/build/html/`
-   - Pushes back to the repository
+   - Deploys the generated HTML to the `gh-pages` branch
+   - GitHub Pages automatically serves the documentation
 
 2. **Accessing Documentation**:
-   - **In Repository**: Navigate to `docs/build/html/index.html` on GitHub
-   - **Locally**: Clone the repo and open `docs/build/html/index.html` in a browser
-   - **After Local Build**: Run Sphinx locally (see below) and view the results
+   - **GitHub Pages**: `https://sap-contributions.github.io/litellm-agentic-examples/`
+   - **Locally**: Run Sphinx locally (see below) and view the results at `docs/build/html/index.html`
 
 ## Local Documentation Build
 
@@ -63,9 +63,12 @@ start docs/build/html/index.html  # Windows
 │   │   ├── conf.py          # Sphinx configuration
 │   │   └── index.rst        # Main documentation page (includes all notebooks)
 │   └── build/
-│       └── html/            # Generated HTML (committed to repo)
+│       └── html/            # Generated HTML (not committed - local only)
+├── copy_notebooks.sh        # Script to copy notebooks for Sphinx
 ├── requirements-docs.txt    # Documentation dependencies
 └── .github/workflows/docs.yml  # Automated documentation workflow
+
+Note: The gh-pages branch contains the published documentation (auto-generated)
 ```
 
 ## Configuration Details
@@ -160,15 +163,23 @@ You can manually trigger the documentation build:
 **Problem**: Notebooks appear as raw text
 **Solution**: Ensure `nbsphinx` is in `extensions` list in `conf.py`
 
-### Workflow Fails to Commit
+### Workflow Fails to Deploy
 
-**Problem**: GitHub Actions workflow fails at commit step
-**Solution**: Check that the workflow has write permissions (set in `.github/workflows/docs.yml`)
+**Problem**: GitHub Actions workflow fails at deployment step
+**Solution**:
+- Check that the workflow has `contents: write` permissions (set in `.github/workflows/docs.yml`)
+- Verify the `gh-pages` branch exists (it will be created automatically on first run)
+- Check the Actions logs for specific error messages
 
-### Large Documentation Size
+### GitHub Pages Not Working
 
-**Problem**: Repository size grows due to committed HTML
-**Solution**: This is expected. The HTML files are committed for easy access. If size becomes an issue, consider using GitHub Pages deployment instead.
+**Problem**: GitHub Pages shows 404 or doesn't update
+**Solution**:
+1. Go to repository **Settings → Pages**
+2. Under "Build and deployment" → "Source", select **Deploy from a branch**
+3. Under "Branch", select `gh-pages` and `/ (root)`
+4. Click **Save**
+5. Wait 1-2 minutes for GitHub to rebuild the site
 
 ## Advanced Topics
 
