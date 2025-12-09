@@ -43,6 +43,8 @@ Each framework example is described in a separate jupyter notebook.
 
 
 ## Note for Maintainers of these examples
+
+### Cleanup Notebooks before Commit
 Clear cell outputs and metadata using the ".pre-commit-config.yaml".
 Installation procedure:
 ```bash
@@ -58,3 +60,7 @@ Skip Hooks temporarily:
 ```bash
 git commit -m "Message" --no-verify
 ```
+
+### Update Documentation via Sphinx
+The documentation is automatically built and deployed via GitHub Actions on each push to the main branch.
+To build the documentation locally, follow the instructions in [DOCUMENTATION_SETUP.md](./DOCUMENTATION_SETUP.md).

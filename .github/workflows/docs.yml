@@ -28,6 +28,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements-docs.txt
 
+      - name: Copy notebooks to docs source
+        run: |
+          chmod +x copy_notebooks.sh
+          ./copy_notebooks.sh
+
       - name: Build Sphinx documentation
         run: |
           sphinx-build -b html docs/source docs/build/html

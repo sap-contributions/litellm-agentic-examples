@@ -8,11 +8,20 @@
 
 project = 'Agentic examples LiteLLM Gen AI Hub'
 copyright = '2025, Vasilisa Karim Mathis'
-author = 'Vasilisa Parshikova (LeverX), Karim Mohraz (SAP), Mathis Boerner (SAP)'
+author = 'Vasilisa Parshikova (LeverX), Karim Mohraz (SAP SE), Mathis Boerner (SAP SE)'
 release = '1.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+
+# -- Path setup --------------------------------------------------------------
+
+# If extensions (or modules to document with autodoc) are in another directory,
+# add these directories to sys.path here. If the directory is relative to the
+# documentation root, use os.path.abspath to make it absolute, like shown here.
+import pathlib
+import sys
+sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
 
 extensions = [
     'nbsphinx',
@@ -25,6 +34,11 @@ exclude_patterns = ['_build', '**.ipynb_checkpoints']
 # nbsphinx configuration
 nbsphinx_allow_errors = True  # Continue building even if notebooks have errors
 nbsphinx_execute = 'never'    # Don't execute notebooks during build
+
+# Tell nbsphinx where to find notebooks relative to the source directory
+nbsphinx_prolog = """
+{% set docname = env.doc2path(env.docname, base=None) %}
+"""
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

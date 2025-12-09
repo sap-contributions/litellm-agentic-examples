@@ -73,6 +73,7 @@ instance/
 docs/_build/
 docs/build/doctrees/
 docs/build/.buildinfo
+docs/source/_notebooks/
 
 # PyBuilder
 .pybuilder/

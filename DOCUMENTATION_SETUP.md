@@ -30,6 +30,9 @@ To build the documentation locally:
 # Install documentation dependencies
 pip install -r requirements-docs.txt
 
+# Copy notebooks to docs source directory
+./copy_notebooks.sh
+
 # Build the documentation
 sphinx-build -b html docs/source docs/build/html
 
@@ -40,6 +43,8 @@ xdg-open docs/build/html/index.html  # Linux
 # or
 start docs/build/html/index.html  # Windows
 ```
+
+**Note**: The `copy_notebooks.sh` script copies only the `.ipynb` files (not Python files or other content) from each example directory to `docs/source/_notebooks/` so Sphinx can find them. This temporary directory is excluded from git via `.gitignore`.
 
 ## Project Structure
 
@@ -98,16 +103,21 @@ ipython
 
 To add a new notebook to the documentation:
 
-1. Add the notebook path to `docs/source/index.rst` in the `toctree` section:
+1. Update the `copy_notebooks.sh` script to include your new notebook directory:
+   ```bash
+   cp -r your_new_example/*.ipynb docs/source/_notebooks/
+   ```
+
+2. Add the notebook path to `docs/source/index.rst` in the `toctree` section:
    ```rst
    .. toctree::
       :maxdepth: 2
       :caption: Agent Framework Examples:
 
-      ../../path/to/your/new_notebook.ipynb
+      _notebooks/your_new_notebook.ipynb
    ```
 
-2. Push your changes - the workflow will automatically rebuild the documentation
+3. Push your changes - the workflow will automatically rebuild the documentation
 
 ### Updating Configuration
 
