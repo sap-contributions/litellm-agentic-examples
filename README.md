@@ -4,7 +4,7 @@
 
 [//]: # ([![License]&#40;https://img.shields.io/github/license/sap-contributions/litellm-agentic-examples&#41;]&#40;LICENSE&#41;)
 
-The examples below showcase how to use different agentic frameworks with the SAP provider via LiteLMM.
+The examples below showcase how to use different agentic frameworks with the SAP provider via LiteLLM.
 Users can access LLMs across all vendors (OpenAI, Google, Amazon, Mistral, SAP, ...) available in the Generative AI Hub.
 Each framework example is described in a separate jupyter notebook.
 
