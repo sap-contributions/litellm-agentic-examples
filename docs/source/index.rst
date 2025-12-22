@@ -37,7 +37,7 @@ SAP AI Core Gen AI subscription via SAP BTP tenant:
 https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/enabling-service-in-cloud-foundry
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Agent Framework Examples:
 
    _notebooks/examples/langgraph_agent.ipynb
@@ -57,6 +57,4 @@ https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/enabling-service
 Indices and tables
 ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
