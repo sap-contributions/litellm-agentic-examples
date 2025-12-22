@@ -10,15 +10,15 @@ SAP customers can access LLMs across all vendors (OpenAI, Google, Amazon, Mistra
 
 📚 **[View Online documentation](https://sap-contributions.github.io/litellm-agentic-examples/)** 📚
 
-🎥 **[Watch Video Tutorial](https://www.youtube.com/watch?v=osVV9lqm3ms)** 🎥
+🎥 **[Watch the Devtoberfest Talk on LiteLLM & SAP GenAI Hub](https://www.youtube.com/watch?v=osVV9lqm3ms)** 🎥
 
 ## Sap Generative AI Hub
 The [SAP Generative AI Hub](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/large-language-models)
-enables customers to access large language models (LLMs) from various providers e.g., Gemini, ChatGPT, Claude, Mistral, ...,
+enables customers to access large language models (LLMs) from various providers e.g., Gemini, ChatGPT, Claude, Mistral
 in a centralized manner.
 
 ## LiteLMM
-[LiteLLM](https://www.litellm.ai) is an opensource library which supports 100+ LLMs from various providers.
+[LiteLLM](https://www.litellm.ai) is an open-source library which supports 100+ LLMs from various providers.
 LiteLLM acts as the bridge to use standard open-source frameworks via the OpenAI api. LiteLLM integrates with various
 LLM providers. The "SAP provider" is recently added to LiteLLM to support the SAP Generative AI Hub.
 
