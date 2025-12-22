@@ -27,8 +27,8 @@ LLM providers. The "SAP provider" is recently added to LiteLLM to support the SA
    :width: 600px
    :align: center
 
-🎥 **Watch the** `Devtoberfest Talk <https://www.youtube.com/watch?v=osVV9lqm3ms>`_ 🎥
-on how to use LiteLLM with SAP Generative AI Hub!
+**Watch the** 🎥`Devtoberfest Talk <https://www.youtube.com/watch?v=osVV9lqm3ms>`_ 🎥 on LiteLLM & SAP Generative AI Hub.
+
 
 Prerequisites
 -------------
