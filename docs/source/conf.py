@@ -49,6 +49,9 @@ html_css_files = [
     'custom.css',
 ]
 
+# Disable the paragraph/permalink markers (¶)
+html_permalinks = False
+
 # Sphinx Awesome Theme options
 html_theme_options = {
     "show_prev_next": True,

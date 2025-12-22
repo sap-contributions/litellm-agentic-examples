@@ -72,6 +72,8 @@ instance/
 # Note: docs/build/ is no longer committed - deployed to gh-pages branch instead
 docs/_build/
 docs/build/
+docs/build/doctrees/
+doc/s/build/html/
 docs/source/_notebooks/
 
 # PyBuilder
