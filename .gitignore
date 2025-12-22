@@ -73,7 +73,7 @@ instance/
 docs/_build/
 docs/build/
 docs/build/doctrees/
-doc/s/build/html/
+docs/build/html/
 docs/source/_notebooks/
 
 # PyBuilder
@@ -216,3 +216,5 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+/docs/build/
+/docs/build/html/
