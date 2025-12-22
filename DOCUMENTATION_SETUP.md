@@ -93,17 +93,22 @@ The documentation includes all example notebooks:
 
 Key settings:
 - **Extensions**: `nbsphinx` for Jupyter notebook rendering, `sphinx.ext.mathjax` for math
-- **Theme**: `sphinx_rtd_theme` (Read the Docs theme)
+- **Theme**: `sphinxawesome_theme` (Sphinx Awesome Theme - modern, responsive design with dark mode support)
+- **Custom CSS**: `custom.css` in `_static/` directory for additional styling
 - **nbsphinx settings**:
   - `nbsphinx_allow_errors = True` - Continue building even if notebooks have errors
   - `nbsphinx_execute = 'never'` - Don't execute notebooks during build
+- **Theme Options**:
+  - `show_prev_next = True` - Navigation to previous/next pages
+  - `show_scrolltop = True` - Scroll to top button
+  - `show_breadcrumbs = True` - Breadcrumb navigation
 
 ### Dependencies
 
 **Python packages** (`requirements-docs.txt`):
 ```
 sphinx>=7.0
-sphinx-rtd-theme
+sphinxawesome-theme
 nbsphinx
 ipython
 ```
@@ -185,15 +190,24 @@ You can manually trigger the documentation build:
 
 ### Customizing the Theme
 
-Edit `docs/source/conf.py` to customize the Read the Docs theme:
+Edit `docs/source/conf.py` to customize the Sphinx Awesome Theme:
 
 ```python
 html_theme_options = {
-    'navigation_depth': 4,
-    'titles_only': False,
-    'collapse_navigation': False,
+    'show_prev_next': True,
+    'show_scrolltop': True,
+    'show_breadcrumbs': True,
+    'extra_header_links': {},
 }
 ```
+
+Available theme options:
+- `show_prev_next`: Show navigation to previous/next pages
+- `show_scrolltop`: Display scroll-to-top button
+- `show_breadcrumbs`: Show breadcrumb navigation
+- `extra_header_links`: Add custom links to the header
+
+For more customization options, see the [Sphinx Awesome Theme documentation](https://sphinxawesome.xyz/).
 
 ### Adding Custom CSS/JavaScript
 

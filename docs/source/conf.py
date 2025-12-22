@@ -43,5 +43,15 @@ nbsphinx_prolog = """
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'sphinxawesome_theme'
 html_static_path = ['_static']
+html_css_files = [
+    'custom.css',
+]
+
+# Sphinx Awesome Theme options
+html_theme_options = {
+    "show_prev_next": True,
+    "show_scrolltop": True,
+    "show_breadcrumbs": True,
+}
