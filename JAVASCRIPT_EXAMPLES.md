@@ -332,7 +332,7 @@ async function chat(message: string): Promise<string> {
   } catch (error) {
     if (error instanceof Error) {
       console.error('Error calling LLM:', error.message);
-      
+
       // Handle specific error types
       if (error.message.includes('401')) {
         throw new Error('Authentication failed. Check your API key.');
@@ -370,8 +370,8 @@ export async function POST(req: NextRequest) {
 
     const response = await model.invoke(message);
 
-    return NextResponse.json({ 
-      response: response.content 
+    return NextResponse.json({
+      response: response.content
     });
   } catch (error) {
     console.error('Error:', error);

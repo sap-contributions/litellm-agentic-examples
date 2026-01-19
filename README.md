@@ -51,7 +51,7 @@ The following table shows which frameworks are included in this repository and t
 ### Integration Types
 
 - **Library Integration**: Uses LiteLLM as a Python library directly in your code. The framework calls LiteLLM functions, which handle the communication with SAP Generative AI Hub.
-  
+
 - **Proxy Integration**: Runs LiteLLM as a standalone server that mimics the OpenAI API. Your framework connects to this local proxy server, which forwards requests to SAP Generative AI Hub. This approach enables multi-language support.
 
 ## Getting Started
@@ -61,6 +61,8 @@ The following table shows which frameworks are included in this repository and t
 - [SAP AI Core with Generative AI Hub subscription](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/enabling-service-in-cloud-foundry) via SAP BTP tenant
 - Python 3.8 or higher
 - LiteLLM library (latest version includes SAP provider support)
+
+> **Note:** While Python 3.8+ is supported, Python 3.12 or higher is recommended for optimal performance and compatibility.
 
 ### Installation
 
@@ -83,50 +85,13 @@ pip install "litellm[proxy]"
 
 ## Running LiteLLM as a Proxy
 
-The proxy approach runs LiteLLM as a standalone server, making it accessible to any application that can make HTTP requests. This is particularly useful for:
-- Multi-language support (JavaScript, TypeScript, Go, etc.)
-- Microservices architectures
-- Centralized LLM access management
-- Testing and development
+The proxy approach runs LiteLLM as a standalone server, making it accessible to any application that can make HTTP requests. This is particularly useful for multi-language support (e.g., JavaScript, Go) and microservices architectures.
 
-### Quick Start with Docker
+The proxy mimics the OpenAI API, allowing any OpenAI-compatible client to connect to SAP Generative AI Hub by pointing it to the local proxy URL.
 
-<PLACEHOLDER: Docker Example>
+**For detailed instructions on configuring and running the proxy, including Docker setup, please see the complete guide:**
 
-### Configuration
-
-Create a `config.yaml` file with your SAP Generative AI Hub credentials:
-
-```yaml
-model_list:
-  - model_name: "sap/*"
-    litellm_params:
-      model: "sap/*"
-
-litellm_settings:
-  drop_params: True
-
-general_settings:
-  master_key: sk-1234
-  store_model_in_db: False
-
-environment_variables:
-  AICORE_AUTH_URL: "https://your-tenant.authentication.sap.hana.ondemand.com/oauth/token"
-  AICORE_CLIENT_ID: "your-client-id"
-  AICORE_CLIENT_SECRET: "your-client-secret"
-  AICORE_RESOURCE_GROUP: "your-resource-group"
-  AICORE_BASE_URL: "https://api.ai.your-region.cfapps.sap.hana.ondemand.com/v2"
-```
-
-### Running the Proxy
-
-```bash
-litellm --config ./config.yaml
-```
-
-The proxy will start on `http://localhost:4000` by default. You can now point any OpenAI-compatible client to this URL.
-
-For detailed proxy setup instructions, see [PROXY_SETUP.md](PROXY_SETUP.md).
+**[PROXY_SETUP.md](PROXY_SETUP.md)**
 
 ## Multi-Language Support
 
@@ -219,6 +184,7 @@ We welcome contributions! If you'd like to add an example for a framework not li
 - [Devtoberfest Talk: LiteLLM & SAP GenAI Hub](https://www.youtube.com/watch?v=osVV9lqm3ms)
 - [LiteLLM Documentation](https://docs.litellm.ai/)
 - [SAP AI Core Documentation](https://help.sap.com/docs/sap-ai-core)
+- [SAP Generative AI Hub Documentation](https://help.sap.com/docs/sap-ai-core/generative-ai)
 
 ## Note for Maintainers
 

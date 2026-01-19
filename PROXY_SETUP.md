@@ -107,11 +107,134 @@ litellm --config ./config.yaml --port 4000 --num_workers 4
 
 ### Using Docker Run
 
-<PLACEHOLDER: Docker Run Command>
+**Create a Dockerfile:**
+
+```dockerfile
+FROM python:3.12-slim
+
+# Install LiteLLM with proxy support
+RUN pip install --no-cache-dir "litellm[proxy]"
+
+# Set working directory
+WORKDIR /app
+
+# Copy configuration file
+COPY config.yaml .
+
+# Expose the default LiteLLM proxy port
+EXPOSE 4000
+
+# Start the LiteLLM proxy server
+CMD ["litellm", "--config", "./config.yaml", "--port", "4000"]
+```
+
+**Build and run the container:**
+
+```bash
+# Build the Docker image
+docker build -t litellm-proxy .
+
+# Run with environment variables from .env file
+docker run -d \
+  --name litellm-proxy \
+  -p 4000:4000 \
+  --env-file .env \
+  litellm-proxy
+```
+
+**Create a `.env` file with your SAP credentials:**
+
+```env
+AICORE_AUTH_URL=https://your-tenant.authentication.sap.hana.ondemand.com/oauth/token
+AICORE_CLIENT_ID=your-client-id
+AICORE_CLIENT_SECRET=your-client-secret
+AICORE_RESOURCE_GROUP=your-resource-group
+AICORE_BASE_URL=https://api.ai.your-region.cfapps.sap.hana.ondemand.com/v2
+```
+
+**Update your `config.yaml` to use environment variables:**
+
+```yaml
+model_list:
+  - model_name: "sap/*"
+    litellm_params:
+      model: "sap/*"
+
+litellm_settings:
+  drop_params: True
+
+general_settings:
+  master_key: sk-1234
+  store_model_in_db: False
+
+environment_variables:
+  AICORE_AUTH_URL: ${AICORE_AUTH_URL}
+  AICORE_CLIENT_ID: ${AICORE_CLIENT_ID}
+  AICORE_CLIENT_SECRET: ${AICORE_CLIENT_SECRET}
+  AICORE_RESOURCE_GROUP: ${AICORE_RESOURCE_GROUP}
+  AICORE_BASE_URL: ${AICORE_BASE_URL}
+```
 
 ### Using Docker Compose
 
-<PLACEHOLDER: Docker Compose Example>
+**Create a `docker-compose.yml` file:**
+
+```yaml
+version: '3.8'
+
+services:
+  litellm-proxy:
+    build: .
+    container_name: litellm-proxy
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+```
+
+**Start the service:**
+
+```bash
+# Start the proxy in detached mode
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop the service
+docker-compose down
+```
+
+**Alternative: Using pre-built image (if available):**
+
+```yaml
+version: '3.8'
+
+services:
+  litellm-proxy:
+    image: python:3.12-slim
+    container_name: litellm-proxy
+    command: >
+      sh -c "pip install --no-cache-dir 'litellm[proxy]' &&
+             litellm --config /app/config.yaml --port 4000"
+    ports:
+      - "4000:4000"
+    env_file:
+      - .env
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+    working_dir: /app
+    restart: unless-stopped
+```
 
 ## Testing the Proxy
 
@@ -254,7 +377,7 @@ model_list:
     litellm_params:
       model: "sap/gpt-4"
       max_tokens: 4096
-  
+
   - model_name: "sap-claude"
     litellm_params:
       model: "sap/claude-3-sonnet"
@@ -270,10 +393,6 @@ litellm_settings:
   set_verbose: True
   json_logs: True
 ```
-
-### Rate Limiting
-
-<PLACEHOLDER: Rate Limiting Configuration>
 
 ## Additional Resources
 
