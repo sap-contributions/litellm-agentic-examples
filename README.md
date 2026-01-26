@@ -18,7 +18,7 @@ This repository demonstrates how to:
 
 ### SAP Generative AI Hub
 
-[SAP Generative AI Hub](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/large-language-models) is SAP's enterprise platform for accessing large language models. It provides centralized access to LLMs from multiple providers including OpenAI, Google, Amazon, Mistral, and SAP's own models, with built-in governance, security, and compliance features.
+[SAP Generative AI Hub](https://help.sap.com/docs/sap-ai-core/generative-ai/generative-ai-hub?locale=en-US) is SAP's enterprise platform for accessing large language models. It provides centralized access to LLMs from multiple providers including OpenAI, Google, Amazon, Mistral, and SAP's own models, with built-in governance, security, and compliance features.
 
 ### LiteLLM
 
