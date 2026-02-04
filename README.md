@@ -32,21 +32,21 @@ Most open-source agent frameworks are designed to work with OpenAI's API. LiteLL
 
 ## Framework Support Overview
 
-The following table shows which frameworks are included in this repository and their integration methods:
+The following table shows which frameworks are included in this repository, their integration methods, and example notebooks:
 
-| Framework | Description | Library | Proxy | Example |
-|-----------|-------------|---------|-------|---------|
-| **LangGraph** | Low-level orchestration framework for building stateful, multi-agent applications using graph-based control flow with cyclic capabilities. Trusted by companies like Klarna, Replit, and Elastic for production deployment with built-in debugging via LangSmith. | ✓ | ✓ | [View](langgraph_example/) |
-| **CrewAI** | Lean Python framework built from scratch for creating autonomous AI agents with role-based architecture. Features high-level simplicity with low-level control, supporting 100,000+ certified developers and claiming 5.76x faster execution in certain cases. | ✓ | ✓ | [View](crewai_example/) |
-| **PydanticAI** | Type-safe agent framework by the Pydantic team with sophisticated dependency injection, durable execution for long-running workflows, and automatic self-correction where validation errors enable real-time learning from mistakes. Supports MCP and A2A protocols. | - | ✓ | [View](pydantic_ai_example/) |
-| **Google ADK** | Flexible, model-agnostic framework powering agents in Google products like Agentspace. Supports Python, Go, and Java with workflow agents for predictable pipelines, pre-built tools, and MCP tools integration optimized for Gemini and the Google ecosystem. | ✓ | ✓ | [View](google_adk_example/) |
-| **OpenAI Agents SDK** | Lightweight, production-ready Python framework with minimal abstractions, featuring four core primitives: agents, handoffs, guardrails, and sessions. Provider-agnostic supporting 100+ LLMs with automatic Pydantic-powered schema generation and built-in tracing. | ✓ | ✓ | [View](openai_adk_example/) |
-| **AWS Strands** | Model-driven SDK taking advantage of state-of-the-art models' capabilities to plan and execute. Used in production by AWS teams including Amazon Q Developer and AWS Glue, with support for thousands of MCP servers and multi-agent primitives including A2A protocol. | ✓ | ✓ | [View](aws_strands_example/) |
-| **LlamaIndex** | Data orchestration framework with enterprise-grade document parsing supporting 90+ file types. Features event-driven Workflows for multi-step agentic systems and 300+ integration packages working seamlessly with various LLM, embedding, and vector store providers. | ✓ | ✓ | [View](LlamaIndex_example/) |
-| **smolagents** | Minimalist framework by Hugging Face with ~1,000 lines of core code, specializing in code agents that write and execute Python snippets. Features sandboxed execution environments and achieves ~30% reduction in LLM calls compared to standard tool-calling methods. | ✓ | ✓ | [View](smolagents_example/) |
-| **Microsoft Agent Framework** | Comprehensive .NET and Python framework combining AutoGen's abstractions with Semantic Kernel's enterprise features. Introduces graph-based architecture with workflows for explicit control, checkpointing for long-running processes, and comprehensive monitoring integration. | - | ✓ | [View](microsoft_agent_example/) |
-| **AgentScope** | Agent-oriented framework with native asynchronous execution support for realtime interruption and customized handling. Prioritizes transparency with no deep encapsulation, making all operations visible and controllable. Includes AgentScope Studio for visual multi-agent system management. | ✓ | ✓ | [View](agentscope_example/) |
-| **AG2** | Open-source framework (formerly AutoGen) with open governance under AG2AI organization. Features core agents like ConversableAgent for seamless communication, supports multi-agent conversation patterns, and introduces FSM/Stateflow for structured state management. | - | ✓ | [View](ag2_example/) |
+| Framework | Description | Library | Proxy | Notebook Examples                                                                                       |
+|-----------|-------------|---------|-------|---------------------------------------------------------------------------------------------------------|
+| **LangGraph** | Low-level orchestration framework for building stateful, multi-agent applications using graph-based control flow with cyclic capabilities. Trusted by companies like Klarna, Replit, and Elastic for production deployment with built-in debugging via LangSmith. | ✓ | ✓ | [Library](langgraph_example/langgraph_agent.ipynb)                                                      |
+| **CrewAI** | Lean Python framework built from scratch for creating autonomous AI agents with role-based architecture. Features high-level simplicity with low-level control, supporting 100,000+ certified developers and claiming 5.76x faster execution in certain cases. | ✓ | ✓ | [Library](crewai_example/crewai_litellm_lib.ipynb),  [Proxy](crewai_example/crewai_litellm_proxy.ipynb) |
+| **PydanticAI** | Type-safe agent framework by the Pydantic team with sophisticated dependency injection, durable execution for long-running workflows, and automatic self-correction where validation errors enable real-time learning from mistakes. Supports MCP and A2A protocols. | - | ✓ | [Proxy](pydantic_ai_example/pydantic_ai_litellm_proxy.ipynb)                                            |
+| **Google ADK** | Flexible, model-agnostic framework powering agents in Google products like Agentspace. Supports Python, Go, and Java with workflow agents for predictable pipelines, pre-built tools, and MCP tools integration optimized for Gemini and the Google ecosystem. | ✓ | ✓ | [Library](google_adk_example/google_adk.ipynb)                                                          |
+| **OpenAI Agents SDK** | Lightweight, production-ready Python framework with minimal abstractions, featuring four core primitives: agents, handoffs, guardrails, and sessions. Provider-agnostic supporting 100+ LLMs with automatic Pydantic-powered schema generation and built-in tracing. | ✓ | ✓ | [Library](openai_adk_example/openai_adk.ipynb)                                                          |
+| **AWS Strands** | Model-driven SDK taking advantage of state-of-the-art models' capabilities to plan and execute. Used in production by AWS teams including Amazon Q Developer and AWS Glue, with support for thousands of MCP servers and multi-agent primitives including A2A protocol. | ✓ | ✓ | [Library](aws_strands_example/aws_strands.ipynb)                                                        |
+| **LlamaIndex** | Data orchestration framework with enterprise-grade document parsing supporting 90+ file types. Features event-driven Workflows for multi-step agentic systems and 300+ integration packages working seamlessly with various LLM, embedding, and vector store providers. | ✓ | ✓ | [Library](LlamaIndex_example/LlamaIndex_litellm.ipynb)                                                  |
+| **smolagents** | Minimalist framework by Hugging Face with ~1,000 lines of core code, specializing in code agents that write and execute Python snippets. Features sandboxed execution environments and achieves ~30% reduction in LLM calls compared to standard tool-calling methods. | ✓ | ✓ | [Library](smolagents_example/smolagents_litellm.ipynb)                                                  |
+| **Microsoft Agent Framework** | Comprehensive .NET and Python framework combining AutoGen's abstractions with Semantic Kernel's enterprise features. Introduces graph-based architecture with workflows for explicit control, checkpointing for long-running processes, and comprehensive monitoring integration. | - | ✓ | [Proxy](microsoft_agent_example/microsoft_agent_litellm_proxy.ipynb)                                    |
+| **AgentScope** | Agent-oriented framework with native asynchronous execution support for realtime interruption and customized handling. Prioritizes transparency with no deep encapsulation, making all operations visible and controllable. Includes AgentScope Studio for visual multi-agent system management. | ✓ | ✓ | [Library](agentscope_example/agentscope_litellm.ipynb)                                                  |
+| **AG2** | Open-source framework (formerly AutoGen) with open governance under AG2AI organization. Features core agents like ConversableAgent for seamless communication, supports multi-agent conversation patterns, and introduces FSM/Stateflow for structured state management. | - | ✓ | [Proxy](ag2_example/ag2_litellm_proxy.ipynb)                                                            |
 
 ### Integration Types
 
@@ -117,54 +117,6 @@ console.log(response.content);
 
 Learn more with our [JavaScript/TypeScript examples](JAVASCRIPT_EXAMPLES.md).
 
-## Framework Examples
-
-Each example includes both a Jupyter notebook and a Python script demonstrating the integration step-by-step. The notebooks provide detailed explanations of the agent workflow and how to configure the connection to SAP Generative AI Hub.
-
-### 1. LangGraph
-Build stateful, multi-actor applications with graph-based agent orchestration.
-- [langgraph_agent.ipynb](langgraph_example/langgraph_agent.ipynb) - Library integration example
-
-### 2. CrewAI
-Create teams of AI agents that work together on complex tasks with defined roles and goals.
-- [crewai_library.ipynb](crewai_example/crewai_litellm_lib.ipynb) - Library integration
-- [crewai_proxy.ipynb](crewai_example/crewai_litellm_proxy.ipynb) - Proxy integration
-
-### 3. PydanticAI
-Build type-safe agents with automatic validation and structured outputs using Pydantic models.
-- [pydantic_ai_proxy.ipynb](pydantic_ai_example/pydantic_ai_litellm_proxy.ipynb) - Proxy integration
-
-### 4. Google ADK
-Develop conversational AI agents using Google's Agent Development Kit.
-- [google_adk.ipynb](google_adk_example/google_adk.ipynb) - Library integration
-
-### 5. OpenAI ADK
-Create assistants with tools, file search, and code interpreter using OpenAI's framework.
-- [openai_adk.ipynb](openai_adk_example/openai_adk.ipynb) - Library integration
-
-### 6. AWS Strands
-Build multi-step agent workflows using Amazon's agent framework.
-- [aws_strands.ipynb](aws_strands_example/aws_strands.ipynb) - Library integration
-
-### 7. LlamaIndex
-Develop RAG applications and data-aware agents for question answering over your documents.
-- [llamaindex_litellm.ipynb](LlamaIndex_example/LlamaIndex_litellm.ipynb) - Library integration
-
-### 8. smolagents
-Create lightweight, efficient agents with minimal dependencies and fast execution.
-- [smolagents_litellm.ipynb](smolagents_example/smolagents_litellm.ipynb) - Library integration
-
-### 9. Microsoft Agent Framework
-Build enterprise-ready agents using Microsoft's production-focused framework.
-- [microsoft_agent_proxy.ipynb](microsoft_agent_example/microsoft_agent_litellm_proxy.ipynb) - Proxy integration
-
-### 10. AgentScope
-Develop complex multi-agent systems with sophisticated interaction patterns.
-- [agentscope_litellm.ipynb](agentscope_example/agentscope_litellm.ipynb) - Library integration
-
-### 11. AG2
-Build next-generation multi-agent conversations with the successor to AutoGen.
-- [ag2_proxy.ipynb](ag2_example/ag2_litellm_proxy.ipynb) - Proxy integration
 
 ## Contributing
 

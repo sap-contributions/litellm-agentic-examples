@@ -70,6 +70,8 @@ environment_variables:
 
 ### Configuration Parameters Explained
 
+For a more comprehensive list, check the [LiteLLM Proxy Documentation](https://docs.litellm.ai/docs/proxy/config_settings).
+
 - **model_name**: Pattern for model names. `sap/*` allows any model with the `sap/` prefix
 - **drop_params**: Removes unsupported parameters before sending to SAP GenAI Hub
 - **master_key**: Authentication key for accessing your proxy (change to a secure value)
@@ -285,12 +287,6 @@ Most common SAP Generative AI Hub models are supported, including:
 - `sap/claude-4.5-sonnet`
 - `sap/gemini-pro`
 
-To list available models:
-
-```bash
-curl http://localhost:4000/v1/models \
-  -H "Authorization: Bearer sk-1234"
-```
 
 ## Troubleshooting
 
