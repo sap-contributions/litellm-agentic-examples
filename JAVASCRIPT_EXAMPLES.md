@@ -4,7 +4,7 @@ This guide demonstrates how to use SAP Generative AI Hub with JavaScript and Typ
 
 ## Prerequisites
 
-- LiteLLM proxy running and configured (see [PROXY_SETUP.md](PROXY_SETUP.md))
+- LiteLLM proxy running and configured (see [LiteLLM Proxy Setup Guide](PROXY_SETUP.md))
 - Node.js 16 or higher
 - npm or yarn package manager
 

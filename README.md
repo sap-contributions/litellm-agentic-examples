@@ -39,13 +39,13 @@ The following table shows which frameworks are included in this repository and t
 | **LangGraph** | Low-level orchestration framework for building stateful, multi-agent applications using graph-based control flow with cyclic capabilities. Trusted by companies like Klarna, Replit, and Elastic for production deployment with built-in debugging via LangSmith. | ✓ | ✓ | [View](langgraph_example/) |
 | **CrewAI** | Lean Python framework built from scratch for creating autonomous AI agents with role-based architecture. Features high-level simplicity with low-level control, supporting 100,000+ certified developers and claiming 5.76x faster execution in certain cases. | ✓ | ✓ | [View](crewai_example/) |
 | **PydanticAI** | Type-safe agent framework by the Pydantic team with sophisticated dependency injection, durable execution for long-running workflows, and automatic self-correction where validation errors enable real-time learning from mistakes. Supports MCP and A2A protocols. | - | ✓ | [View](pydantic_ai_example/) |
-| **Google ADK** | Flexible, model-agnostic framework powering agents in Google products like Agentspace. Supports Python, Go, and Java with workflow agents for predictable pipelines, pre-built tools, and MCP tools integration optimized for Gemini and the Google ecosystem. | ✓ | - | [View](google_adk_example/) |
-| **OpenAI Agents SDK** | Lightweight, production-ready Python framework with minimal abstractions, featuring four core primitives: agents, handoffs, guardrails, and sessions. Provider-agnostic supporting 100+ LLMs with automatic Pydantic-powered schema generation and built-in tracing. | ✓ | - | [View](openai_adk_example/) |
-| **AWS Strands** | Model-driven SDK taking advantage of state-of-the-art models' capabilities to plan and execute. Used in production by AWS teams including Amazon Q Developer and AWS Glue, with support for thousands of MCP servers and multi-agent primitives including A2A protocol. | ✓ | - | [View](aws_strands_example/) |
-| **LlamaIndex** | Data orchestration framework with enterprise-grade document parsing supporting 90+ file types. Features event-driven Workflows for multi-step agentic systems and 300+ integration packages working seamlessly with various LLM, embedding, and vector store providers. | ✓ | - | [View](LlamaIndex_example/) |
-| **smolagents** | Minimalist framework by Hugging Face with ~1,000 lines of core code, specializing in code agents that write and execute Python snippets. Features sandboxed execution environments and achieves ~30% reduction in LLM calls compared to standard tool-calling methods. | ✓ | - | [View](smolagents_example/) |
+| **Google ADK** | Flexible, model-agnostic framework powering agents in Google products like Agentspace. Supports Python, Go, and Java with workflow agents for predictable pipelines, pre-built tools, and MCP tools integration optimized for Gemini and the Google ecosystem. | ✓ | ✓ | [View](google_adk_example/) |
+| **OpenAI Agents SDK** | Lightweight, production-ready Python framework with minimal abstractions, featuring four core primitives: agents, handoffs, guardrails, and sessions. Provider-agnostic supporting 100+ LLMs with automatic Pydantic-powered schema generation and built-in tracing. | ✓ | ✓ | [View](openai_adk_example/) |
+| **AWS Strands** | Model-driven SDK taking advantage of state-of-the-art models' capabilities to plan and execute. Used in production by AWS teams including Amazon Q Developer and AWS Glue, with support for thousands of MCP servers and multi-agent primitives including A2A protocol. | ✓ | ✓ | [View](aws_strands_example/) |
+| **LlamaIndex** | Data orchestration framework with enterprise-grade document parsing supporting 90+ file types. Features event-driven Workflows for multi-step agentic systems and 300+ integration packages working seamlessly with various LLM, embedding, and vector store providers. | ✓ | ✓ | [View](LlamaIndex_example/) |
+| **smolagents** | Minimalist framework by Hugging Face with ~1,000 lines of core code, specializing in code agents that write and execute Python snippets. Features sandboxed execution environments and achieves ~30% reduction in LLM calls compared to standard tool-calling methods. | ✓ | ✓ | [View](smolagents_example/) |
 | **Microsoft Agent Framework** | Comprehensive .NET and Python framework combining AutoGen's abstractions with Semantic Kernel's enterprise features. Introduces graph-based architecture with workflows for explicit control, checkpointing for long-running processes, and comprehensive monitoring integration. | - | ✓ | [View](microsoft_agent_example/) |
-| **AgentScope** | Agent-oriented framework with native asynchronous execution support for realtime interruption and customized handling. Prioritizes transparency with no deep encapsulation, making all operations visible and controllable. Includes AgentScope Studio for visual multi-agent system management. | ✓ | - | [View](agentscope_example/) |
+| **AgentScope** | Agent-oriented framework with native asynchronous execution support for realtime interruption and customized handling. Prioritizes transparency with no deep encapsulation, making all operations visible and controllable. Includes AgentScope Studio for visual multi-agent system management. | ✓ | ✓ | [View](agentscope_example/) |
 | **AG2** | Open-source framework (formerly AutoGen) with open governance under AG2AI organization. Features core agents like ConversableAgent for seamless communication, supports multi-agent conversation patterns, and introduces FSM/Stateflow for structured state management. | - | ✓ | [View](ag2_example/) |
 
 ### Integration Types
@@ -89,9 +89,8 @@ The proxy approach runs LiteLLM as a standalone server, making it accessible to 
 
 The proxy mimics the OpenAI API, allowing any OpenAI-compatible client to connect to SAP Generative AI Hub by pointing it to the local proxy URL.
 
-**For detailed instructions on configuring and running the proxy, including Docker setup, please see the complete guide:**
+**For detailed instructions on configuring and running the proxy, including Docker setup, please see the [LiteLLM Proxy Setup Guide](PROXY_SETUP.md).**
 
-**[PROXY_SETUP.md](PROXY_SETUP.md)**
 
 ## Multi-Language Support
 
@@ -116,7 +115,7 @@ const response = await model.invoke("Hello, how are you?");
 console.log(response.content);
 ```
 
-For more JavaScript/TypeScript examples, see [JAVASCRIPT_EXAMPLES.md](JAVASCRIPT_EXAMPLES.md).
+Learn more with our [JavaScript/TypeScript examples](JAVASCRIPT_EXAMPLES.md).
 
 ## Framework Examples
 
@@ -211,4 +210,4 @@ git commit -m "Message" --no-verify
 
 ### Update Documentation via Sphinx
 
-The documentation is automatically built and deployed via GitHub Actions on each push to the main branch. To build the documentation locally, follow the instructions in [DOCUMENTATION_SETUP.md](./DOCUMENTATION_SETUP.md).
+The documentation is automatically built and deployed via GitHub Actions on each push to the main branch. To build the documentation locally, follow the instructions in our [Documentation Setup Guide](./DOCUMENTATION_SETUP.md).
