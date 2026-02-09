@@ -6,6 +6,7 @@ This repository has Sphinx documentation that is automatically generated from Ju
 
 The documentation system is **already configured** and ready to use:
 - All 12 Jupyter notebooks are included in the documentation
+- PROXY_SETUP.md is included as a reference page
 - GitHub Actions workflow automatically builds and deploys documentation to GitHub Pages
 - Built documentation is published to the `gh-pages` branch and served via GitHub Pages
 

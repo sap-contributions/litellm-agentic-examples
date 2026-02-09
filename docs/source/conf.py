@@ -26,6 +26,7 @@ sys.path.insert(0, pathlib.Path(__file__).parents[2].resolve().as_posix())
 extensions = [
     'nbsphinx',
     'sphinx.ext.mathjax',
+    'myst_parser',
 ]
 
 templates_path = ['_templates']
@@ -57,4 +58,10 @@ html_theme_options = {
     "show_prev_next": True,
     "show_scrolltop": True,
     "show_breadcrumbs": True,
+}
+
+# Configure MyST-Parser to support both .md and .rst files
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.md': 'markdown',
 }

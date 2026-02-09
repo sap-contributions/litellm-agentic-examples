@@ -52,7 +52,7 @@ https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/enabling-service
    _notebooks/examples/microsoft_agent_litellm_proxy.ipynb
    _notebooks/examples/agentscope_litellm.ipynb
    _notebooks/examples/ag2_litellm_proxy.ipynb
-   _notebooks/proxy_set_up.ipynb
+   _notebooks/PROXY_SETUP.md
 
 Indices and tables
 ==================
