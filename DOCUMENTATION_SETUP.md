@@ -5,8 +5,9 @@ This repository has Sphinx documentation that is automatically generated from Ju
 ## Overview
 
 The documentation system is **already configured** and ready to use:
-- **README.md content is dynamically included** as the main landing page (index.html) via `index.rst`
+- **README.md is the main landing page** (index.html) of the documentation
 - All 12 Jupyter notebooks are included in the documentation
+- PROXY_SETUP.md and JAVASCRIPT_EXAMPLES.md are included as reference pages
 - GitHub Actions workflow automatically builds and deploys documentation to GitHub Pages
 - Built documentation is published to the `gh-pages` branch and served via GitHub Pages
 
@@ -53,7 +54,10 @@ start docs/build/html/index.html  # Windows
 
 **Important Notes**:
 - **Pandoc must be installed as a system package** - it's required by nbsphinx but cannot be installed via pip
-- The `copy_notebooks.sh` script copies only the `.ipynb` files (not Python files or other content) from each example directory to `docs/source/_notebooks/`
+- The `copy_notebooks.sh` script copies:
+  - All `.ipynb` files from each example directory to `docs/source/_notebooks/examples/`
+  - `README.md`, `PROXY_SETUP.md`, and `JAVASCRIPT_EXAMPLES.md` to `docs/source/_notebooks/`
+  - The script also fixes image paths in README.md for correct rendering in Sphinx
 - The `_notebooks` directory is temporary and excluded from git via `.gitignore`
 
 ## Project Structure
@@ -94,7 +98,10 @@ The documentation includes all example notebooks:
 ### Sphinx Configuration (`docs/source/conf.py`)
 
 Key settings:
-- **Extensions**: `nbsphinx` for Jupyter notebook rendering, `sphinx.ext.mathjax` for math
+- **Extensions**: 
+  - `nbsphinx` for Jupyter notebook rendering
+  - `sphinx.ext.mathjax` for math
+  - `myst_parser` for Markdown file support (README.md, PROXY_SETUP.md, JAVASCRIPT_EXAMPLES.md)
 - **Theme**: `sphinxawesome_theme` (Sphinx Awesome Theme - modern, responsive design with dark mode support)
 - **Custom CSS**: `custom.css` in `_static/` directory for additional styling
 - **nbsphinx settings**:
@@ -113,6 +120,7 @@ sphinx>=7.0
 sphinxawesome-theme
 nbsphinx
 ipython
+myst-parser
 ```
 
 **System package**:

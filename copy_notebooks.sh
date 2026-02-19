@@ -20,8 +20,6 @@ cp -r smolagents_example/*.ipynb docs/source/_notebooks/examples/
 cp -r microsoft_agent_example/*.ipynb docs/source/_notebooks/examples/
 cp -r agentscope_example/*.ipynb docs/source/_notebooks/examples/
 cp -r ag2_example/*.ipynb docs/source/_notebooks/examples/
-cp proxy_set_up.ipynb docs/source/_notebooks/
-
 # Copy PROXY_SETUP.md and fix code block language for Sphinx
 sed 's/```env/```bash/g' PROXY_SETUP.md > docs/source/_notebooks/PROXY_SETUP.md
 
@@ -29,8 +27,7 @@ sed 's/```env/```bash/g' PROXY_SETUP.md > docs/source/_notebooks/PROXY_SETUP.md
 sed 's/```env/```bash/g' JAVASCRIPT_EXAMPLES.md > docs/source/_notebooks/JAVASCRIPT_EXAMPLES.md
 
 # Copy README.md and fix paths for Sphinx:
-# Note: README.md is included in index.rst via include directive, so paths are relative to docs/source/
-sed -e 's|docs/source/_static/|_static/|g' \
+sed -e 's|docs/source/_static/|../_static/|g' \
     -e 's|(langgraph_example/|(_notebooks/examples/|g' \
     -e 's|(crewai_example/|(_notebooks/examples/|g' \
     -e 's|(pydantic_ai_example/|(_notebooks/examples/|g' \
