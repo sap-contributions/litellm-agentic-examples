@@ -22,4 +22,29 @@ cp -r agentscope_example/*.ipynb docs/source/_notebooks/examples/
 cp -r ag2_example/*.ipynb docs/source/_notebooks/examples/
 cp proxy_set_up.ipynb docs/source/_notebooks/
 
-echo "Notebooks copied successfully!"
+# Copy PROXY_SETUP.md and fix code block language for Sphinx
+sed 's/```env/```bash/g' PROXY_SETUP.md > docs/source/_notebooks/PROXY_SETUP.md
+
+# Copy JAVASCRIPT_EXAMPLES.md and fix code block language for Sphinx
+sed 's/```env/```bash/g' JAVASCRIPT_EXAMPLES.md > docs/source/_notebooks/JAVASCRIPT_EXAMPLES.md
+
+# Copy README.md and fix paths for Sphinx:
+# Note: README.md is included in index.rst via include directive, so paths are relative to docs/source/
+sed -e 's|docs/source/_static/|_static/|g' \
+    -e 's|(langgraph_example/|(_notebooks/examples/|g' \
+    -e 's|(crewai_example/|(_notebooks/examples/|g' \
+    -e 's|(pydantic_ai_example/|(_notebooks/examples/|g' \
+    -e 's|(google_adk_example/|(_notebooks/examples/|g' \
+    -e 's|(openai_adk_example/|(_notebooks/examples/|g' \
+    -e 's|(aws_strands_example/|(_notebooks/examples/|g' \
+    -e 's|(LlamaIndex_example/|(_notebooks/examples/|g' \
+    -e 's|(smolagents_example/|(_notebooks/examples/|g' \
+    -e 's|(microsoft_agent_example/|(_notebooks/examples/|g' \
+    -e 's|(agentscope_example/|(_notebooks/examples/|g' \
+    -e 's|(ag2_example/|(_notebooks/examples/|g' \
+    -e 's|(PROXY_SETUP.md)|(_notebooks/PROXY_SETUP.md)|g' \
+    -e 's|(JAVASCRIPT_EXAMPLES.md)|(_notebooks/JAVASCRIPT_EXAMPLES.md)|g' \
+    -e 's|(./DOCUMENTATION_SETUP.md)|(https://github.com/sap-contributions/litellm-agentic-examples/blob/main/DOCUMENTATION_SETUP.md)|g' \
+    README.md > docs/source/_notebooks/README.md
+
+echo "Notebooks, README, and supporting docs copied successfully!"

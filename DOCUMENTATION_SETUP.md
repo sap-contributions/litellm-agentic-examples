@@ -5,6 +5,7 @@ This repository has Sphinx documentation that is automatically generated from Ju
 ## Overview
 
 The documentation system is **already configured** and ready to use:
+- **README.md content is dynamically included** as the main landing page (index.html) via `index.rst`
 - All 12 Jupyter notebooks are included in the documentation
 - GitHub Actions workflow automatically builds and deploys documentation to GitHub Pages
 - Built documentation is published to the `gh-pages` branch and served via GitHub Pages
@@ -13,8 +14,9 @@ The documentation system is **already configured** and ready to use:
 
 1. **Automatic Building**: When you push changes to the `main` branch, a GitHub Actions workflow:
    - Installs Pandoc (system package) and Sphinx dependencies from `requirements-docs.txt`
-   - Copies notebooks to a temporary `_notebooks` directory
-   - Builds HTML documentation from all Jupyter notebooks
+   - Copies notebooks and README.md to a temporary `_notebooks` directory (using `copy_notebooks.sh`)
+   - The README.md content is dynamically included in `index.rst` via the `include` directive
+   - Builds HTML documentation from all Jupyter notebooks and markdown files
    - Deploys the generated HTML to the `gh-pages` branch
    - GitHub Pages automatically serves the documentation
 
