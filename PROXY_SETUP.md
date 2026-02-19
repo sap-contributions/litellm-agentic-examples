@@ -14,7 +14,7 @@ The LiteLLM proxy is a standalone server that provides an OpenAI-compatible API 
 ## Prerequisites
 
 - SAP AI Core with Generative AI Hub subscription
-- Python 3.8 or higher
+- Python 3.10 or higher (Python 3.14+ recommended)
 - Service key from your SAP BTP tenant
 
 ## Installation

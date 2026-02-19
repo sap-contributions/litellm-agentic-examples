@@ -59,10 +59,10 @@ The following table shows which frameworks are included in this repository, thei
 ### Prerequisites
 
 - [SAP AI Core with Generative AI Hub subscription](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/enabling-service-in-cloud-foundry) via SAP BTP tenant
-- Python 3.8 or higher
+- Python 3.10 or higher
 - LiteLLM library (latest version includes SAP provider support)
 
-> **Note:** While Python 3.8+ is supported, Python 3.12 or higher is recommended for optimal performance and compatibility.
+> **Note:** While Python 3.10+ is supported, Python 3.14 or higher is recommended for optimal performance and compatibility.
 
 ### Installation
 
