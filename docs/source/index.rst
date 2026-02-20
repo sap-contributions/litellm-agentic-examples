@@ -23,6 +23,7 @@
    _notebooks/examples/agentscope_litellm.ipynb
    _notebooks/examples/ag2_litellm_proxy.ipynb
    _notebooks/PROXY_SETUP.md
+   _notebooks/JAVASCRIPT_EXAMPLES.md
 
 Indices and tables
 ==================
