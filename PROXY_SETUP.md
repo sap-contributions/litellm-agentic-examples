@@ -278,6 +278,21 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 ```
+> Note: When using the LiteLLM library to reach the proxy, it is important to set `litellm.use_litellm_proxy = True`
+```python
+import litellm
+
+litellm.use_litellm_proxy = True
+
+response = litellm.completion(
+    model="sap/gpt-4o",
+    messages=[{"content": "Hello, how are you?","role": "user"}],
+    api_base="http://localhost:4000",
+    api_key="sk-1234",  # Your proxy master key
+)
+
+print(response.choices[0].message.content)
+```
 
 ## Available Models
 
