@@ -63,7 +63,7 @@ environment_variables:
   AICORE_CLIENT_ID: "your-client-id"
   AICORE_CLIENT_SECRET: "your-client-secret"
   AICORE_RESOURCE_GROUP: "your-resource-group"
-  AICORE_BASE_URL: "https://api.ai.your-region.cfapps.sap.hana.ondemand.com/v2"
+  AICORE_BASE_URL: "https://api.ai.your-region.hana.ondemand.com/v2"
 ```
 
 **Important**: Replace the placeholder values with your actual SAP credentials.
@@ -151,7 +151,7 @@ AICORE_AUTH_URL=https://your-tenant.authentication.sap.hana.ondemand.com/oauth/t
 AICORE_CLIENT_ID=your-client-id
 AICORE_CLIENT_SECRET=your-client-secret
 AICORE_RESOURCE_GROUP=your-resource-group
-AICORE_BASE_URL=https://api.ai.your-region.cfapps.sap.hana.ondemand.com/v2
+AICORE_BASE_URL=https://api.ai.your-region.hana.ondemand.com/v2
 ```
 
 **Update your `config.yaml` to use environment variables:**
