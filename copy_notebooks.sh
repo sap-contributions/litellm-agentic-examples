@@ -27,7 +27,7 @@ sed 's/```env/```bash/g' PROXY_SETUP.md > docs/source/_notebooks/PROXY_SETUP.md
 sed 's/```env/```bash/g' JAVASCRIPT_EXAMPLES.md > docs/source/_notebooks/JAVASCRIPT_EXAMPLES.md
 
 # Copy README.md and fix paths for Sphinx:
-sed -e 's|docs/source/_static/|../_static/|g' \
+sed -e 's|!\[LiteLLM_SAPGenAIHub\.png\](docs/source/_static/LiteLLM_SAPGenAIHub\.png)|<img src="_static/LiteLLM_SAPGenAIHub.png" alt="LiteLLM SAP GenAI Hub Architecture" />|g' \
     -e 's|(langgraph_example/|(_notebooks/examples/|g' \
     -e 's|(crewai_example/|(_notebooks/examples/|g' \
     -e 's|(pydantic_ai_example/|(_notebooks/examples/|g' \
